@@ -115,6 +115,10 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .top-head img {
+        width: 250px
+    }
+    
     nav {
         display: none;
         flex-direction: column;
@@ -130,5 +134,9 @@ footer {
 
     header p {
         font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 1.2rem
     }
 }
