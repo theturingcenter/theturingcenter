@@ -1744,6 +1744,44 @@
         .package3.is-visible {
             animation-delay: 1.0s;
         }
+
+        @media (max-width: 768px) {
+            .tagline {
+                font-size: 2rem; /* Reduced from 3rem */
+                width: 90%; /* Increased width for better text wrapping */
+            }
+            
+            .emoji-grid, 
+            .emoji-grid-left {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr); /* 3 tiles horizontally */
+                grid-template-rows: repeat(6, auto); /* 6 rows vertically */
+                gap: 0.5rem; /* Slightly reduced gap for tighter layout */
+            }
+            
+            .slant-transition {
+                display: none; /* Hide the slanted SVG on mobile */
+            }
+            
+            .customizable-heading,
+            .preconfigured-heading {
+                font-size: 1.8rem; /* Reduced from 2.5rem */
+            }
+            
+            .feature img {
+                width: 14px; /* Reduced from 16px */
+                height: 14px; /* Reduced from 16px */
+            }
+            
+            .feature-label {
+                font-size: 0.7rem; /* Reduced from 0.8rem */
+            }
+
+            /* Add spacing at the top of black section when slant is removed */
+            .black-section-container {
+                padding-top: 3rem;
+            }
+        }
     </style>
 
     <nav class="navbar">
