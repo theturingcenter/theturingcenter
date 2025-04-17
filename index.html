@@ -3,19 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="Favicon.ico" type="image/x-icon">
-    <!--START DOTO FONT STYLE-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
-    <!--END DOTO FONT STYLE-->
-
-    <!--START FIGTREE FONT STYLE-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <!--END FIGTREE FONT STYLE-->
-
+    <link rel="shortcut icon" href="static/icons/Favicon Transparent.ico" type="image/x-icon">
     <!--START MONTSERRAT FONT STYLE-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,1468 +16,1329 @@
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <!--END TANGERINE FONT STYLE-->
 
-    <title>The Turing Center | Accelerating the Mass Adoption of AI</title>
-</head>
-<body>
+    <!--START GREAT VIBES FONT STYLE-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <!--END GREAT VIBES FONT STYLE-->
+    <title>The Turing Center | Saving time and money with AI voice assistants</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background-color: #F2EFEA;
-            position: relative;
-            min-height: 100vh;
-            overflow-x: hidden; /* Prevent horizontal overflow */
+            background-color: #f8f9fa;
+            color: #212529;
         }
 
-        /* Add noise overlay */
-        body::before {
-            content: '';
+        /* Animation Styles */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 5%;
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 40px;
+            margin-right: 0.75rem;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #785dc8;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 25px;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: #333;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Navbar Container */
-        .navbar {
-            animation: fadeIn 1s ease-out;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 20px 5%; /* More padding for spacing */
-        }
-
-        /* Left Navbar Item */
-        .nav-left {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
-        .nav-left a {
-            text-decoration: none;
-            color: black;
-        }
-
-        /* Navbar Links */
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 20px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .nav-links a {
-            position: relative;
-            display: inline-block;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-family: "Montserrat", sans-serif;
-            font-weight: 500;
-            color: black;
-            cursor: pointer;
-            white-space: nowrap;
-            padding: 0 1px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .nav-links a .original-text,
-        .nav-links a .scrambled-text {
-            display: inline-block;
-            min-width: 100%;
-            width: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-
-        .nav-links a .original-text {
-            position: relative; /* Keep original text in flow */
-        }
-
-        .nav-links a .scrambled-text {
-            opacity: 0;
-        }
-
-        .nav-links a:hover {
-            background-color: black;
-            color: #F2EFEA;
-        }
-
-        .nav-links a:hover .scrambled-text {
-            opacity: 1;
-        }
-
-        .nav-links a:hover .original-text {
-            opacity: 0;
-        }
-
-        /* Mobile Menu Button */
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 24px;
-        }
-
-        /* Landing Page */
-        .landing {
-            display: flex;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column; /* Stack children vertically */
-            height: 100vh;
-            padding: 5%;
-            position: relative;
+            gap: 2rem;
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform 0.4s ease;
         }
 
-        /* Add blob background */
-        .landing::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            background: url('landing blob.svg') no-repeat center;
-            background-size: contain;
-            filter: blur(30px);
-            z-index: 0;
+        .mobile-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
         }
 
-        .tagline {
-            animation: fadeIn 1s ease-out;
-            opacity: 0;
-            animation-fill-mode: forwards;
-            font-family: "Montserrat", sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            width: 50%;
-            text-align: center;
-            position: relative;
-            z-index: 2;
+        .cta-mobile {
+            color: #785dc8;
         }
 
-        .rotating-slogans {
-            animation: fadeIn 1s ease-out;
-            opacity: 0;
-            animation-fill-mode: forwards;
-            margin-top: 2rem;
-            text-align: center;
-            font-family: "Montserrat", sans-serif;
-            font-weight: 500;
-            position: relative;
-            z-index: 2;
-        }
-
-        .slogan {
-            display: inline-block;
-            padding: 0 1px;
-            text-transform: uppercase;
-            background-color: black;
-            color: #F2EFEA;
-        }
-
-        /* Responsive Design */
+        /* Responsive Navbar */
         @media (max-width: 768px) {
-            .nav-links {
+            .nav-links, .nav-right {
                 display: none;
-                flex-direction: column;
-                width: 100%;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                text-align: center;
             }
 
-            .nav-links.active {
+            .hamburger {
                 display: flex;
             }
 
-            .menu-toggle {
-                display: block;
-            }
-
-            .olive-title {
-                font-size: 2.2rem;
-            }
-
-            .olive-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .introducing {
-                font-size: 1.6rem;
-            }
-
-            .feature-container {
-                flex-direction: column;
-                gap: 3rem;
-                margin-top: 2rem;
-            }
-
-            .feature-icon {
-                width: 36px;
-                height: 36px;
-            }
-
-            .feature-name {
-                font-size: 1.1rem;
-            }
-
-            .feature-description {
-                font-size: 0.85rem;
-            }
-
-            .olive-section {
-                margin-top: 3rem;
-                padding: 0 4%;
-            }
-
-            .language-caption {
-                font-size: 1.2rem;
-            }
-        }
-
-        /* Additional breakpoint for very small screens */
-        @media (max-width: 480px) {
-            .olive-title {
-                font-size: 1.8rem;
-            }
-
-            .olive-subtitle {
-                font-size: 1rem;
-            }
-
-            .introducing {
-                font-size: 1.4rem;
-            }
-
-            .language-caption {
-                font-size: 1rem;
-            }
-        }
-
-        .button-container {
-            animation: fadeIn 1s ease-out 0.6s;
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-
-        .olive-section {
-            padding: 0 5%;
-            margin-top: 5rem;
-            animation: fadeIn 1s ease-out;
-            opacity: 0;
-            animation-fill-mode: forwards;
-            position: relative;
-        }
-
-        .olive-section2 {
-            padding: 0 5%;
-            margin-top: 8rem;
-            animation: fadeIn 1s ease-out;
-            opacity: 0;
-            animation-fill-mode: forwards;
-            position: relative;
-        }
-
-        .introducing {
-            font-family: "Tangerine", cursive;
-            font-size: 2rem;
-            color: #BF6900;
-            position: absolute;
-            top: -0.6rem;
-            z-index: 1;
-        }
-
-        .introducing.aligned-right {
-            right: 5%; /* Add this to align from the right */
-            left: auto; /* Reset any left positioning */
-        }
-
-        .olive-title {
-            font-family: "Montserrat", sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            position: relative;
-            z-index: 1;
-        }
-
-        .olive-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 100%;
-            height: 4px;
-            background-color: #9CAD12;
-            filter: blur(15px);
-            z-index: -1;
-        }
-
-        .olive-subtitle {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #333;
-            margin-top: 2rem;
-            text-transform: uppercase;
-            font-style: italic;
-        }
-
-        .aligned {
-            text-align: left;
-            margin-left: 0;
-        }
-
-        .aligned-right {
-            text-align: right;
-            margin-right: 0;
-        }
-
-        .centered {
-            text-align: center;
-        }
-
-        .feature-container {
-            display: flex;
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-right: 5%;
-        }
-
-        .feature-box {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 1rem;
-        }
-
-        .feature-name {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .feature-name::before {
-            content: '|';
-            color: #BF6900;
-            margin-right: 0.5rem;
-            font-weight: 900;
-        }
-
-        .feature-description {
-            font-family: "Montserrat", sans-serif;
-            font-size: 0.9rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Language Section Styles */
-        .language-section {
-            position: relative;
-            padding: 5% 0;
-            min-height: 100vh;
-            max-width: 90%;
-            margin: 8rem auto 0;
-            border-radius: 30px;
-        }
-
-        .language-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('holographic.jpg') center/cover;
-            filter: blur(30px);
-            z-index: 0;
-            border-radius: 30px;
-        }
-
-        .language-headline {
-            font-family: "Montserrat", sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            z-index: 1;
-            color: black;
-            text-transform: uppercase;
-        }
-
-        .language-grid {
-            display: flex;
-            flex-wrap: nowrap; /* Changed from wrap to nowrap to force single row */
-            justify-content: flex-start; /* Changed from center to flex-start */
-            padding: 0 5%;
-            position: relative;
-            z-index: 1;
-            overflow-x: hidden; /* Hide horizontal overflow */
-        }
-
-        .language-tile {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease forwards;
-            animation-play-state: paused;
-            flex-shrink: 0; /* Prevent tiles from shrinking */
-            margin-right: -4rem; /* Increased overlap between tiles */
-        }
-
-        .language-tile img {
-            width: 80px;
-            height: 80px;
-            filter: brightness(0);
-        }
-
-        @media (max-width: 768px) {
-            .language-section {
-                max-width: 95%;
-            }
-
-            .language-headline {
-                font-size: 2.2rem;
-            }
-            
-            .language-tile {
-                padding: 1.5rem;
-            }
-
-            .language-tile img {
-                width: 60px;
-                height: 60px;
-            }
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
+            .mobile-menu.active {
                 transform: translateY(0);
-            }
-        }
-
-        /* Add this new class */
-        .language-caption {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-align: center;
-            text-transform: uppercase;
-            margin-top: 3rem;
-            position: relative;
-            z-index: 1;
-            color: black;
-            padding: 0 5%;
-        }
-
-        /* Button Styles */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 3rem;
-            position: relative;
-            z-index: 1;
-            padding: 0 5%; /* Match the caption's padding */
-        }
-
-        .glass-button {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 1rem 2rem;
-            font-family: "Montserrat", sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: black;
-            text-transform: uppercase;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            width: 100%; /* Take full width of container */
-            max-width: none; /* Remove max-width limitation */
-            text-align: center;
-        }
-
-        .glass-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transform: translateX(-100%);
-            animation: buttonBorderTrace 3s infinite;
-        }
-
-        @keyframes buttonBorderTrace {
-            0% {
-                transform: translateX(-100%);
-            }
-            50% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        .glass-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .glass-button {
-                font-size: 1rem;
-                padding: 0.8rem 1.5rem;
-            }
-        }
-
-        /* Applicable Section Styles */
-        .applicable-section {
-            padding: 5% 0;
-            margin: 8rem auto 0;
-            display: flex;
-            gap: 4rem;
-            max-width: 90%;
-        }
-
-        .applicable-text {
-            flex: 1;
-        }
-
-        .applicable-tag {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #9CAD12;
-            text-transform: uppercase;
-            margin-bottom: 2.5rem; /* Increased from 1.5rem */
-        }
-
-        .applicable-title {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 2.5rem; /* Increased from 1.5rem */
-        }
-
-        .applicable-description {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #333;
-            margin-bottom: 2.5rem; /* Increased from 1.5rem */
-        }
-
-        .emoji-grid {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-top: 2.5rem; /* Align with top of applicable-title */
-        }
-
-        .emoji-tile {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.75rem; /* Reduced from 1rem */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .emoji-tile img {
-            width: 25px; /* Reduced from 30px */
-            height: 25px; /* Reduced from 30px */
-        }
-
-        .emoji-name {
-            font-family: "Montserrat", sans-serif;
-            font-size: 0.6rem; /* Reduced from 0.7rem */
-            text-align: center;
-            color: #333;
-        }
-
-        @media (max-width: 768px) {
-            .applicable-section {
-                flex-direction: column;
-                gap: 2rem;
-                margin-top: 6rem;
+                display: flex;
             }
 
-            .applicable-section:nth-child(2) {
-                flex-direction: column-reverse; /* Reverse order for second section */
+            /* Hamburger animation */
+            .hamburger.active span:first-child {
+                transform: translateY(11px) rotate(45deg);
             }
 
-            .emoji-grid {
-                grid-template-columns: repeat(6, 1fr);
-                gap: 0.75rem;
-            }
-
-            .emoji-tile {
-                padding: 0.75rem;
-            }
-
-            .emoji-tile img {
-                width: 20px;
-                height: 20px;
-            }
-
-            .emoji-name {
-                font-size: 0.6rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .emoji-tile {
-                padding: 0.5rem;
-            }
-
-            .emoji-tile img {
-                width: 18px;
-                height: 18px;
-            }
-
-            .emoji-name {
-                font-size: 0.5rem;
-            }
-        }
-
-        /* Add this new class with same properties but different color */
-        .applicable-tag-alt {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #BF6900; /* New color */
-            text-transform: uppercase;
-            margin-bottom: 2.5rem;
-        }
-
-        /* Second applicable section styles */
-        .applicable-section-reverse {
-            padding: 5% 0;
-            margin: 8rem auto 0;
-            display: flex;
-            flex-direction: row-reverse;
-            gap: 4rem;
-            max-width: 90%;
-            margin-bottom: 0; /* Ensure no extra space below */
-        }
-        
-        .emoji-grid-left {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-top: 2.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .applicable-section, 
-            .applicable-section-reverse {
-                flex-direction: column;
-                gap: 2rem;
-                margin-top: 6rem;
-            }
-
-            .emoji-grid, 
-            .emoji-grid-left {
-                grid-template-columns: repeat(6, 1fr);
-                gap: 0.75rem;
-            }
-
-            .emoji-tile {
-                padding: 0.5rem;
-            }
-
-            .emoji-tile img {
-                width: 18px;
-                height: 18px;
-            }
-
-            .emoji-name {
-                font-size: 0.5rem;
-            }
-        }
-
-        /* Slanted Section Styles */
-        .slanted-container {
-            position: relative;
-            margin-top: 8rem;
-        }
-
-        .slant-transition {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Exit slant styling */
-        .slant-exit {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin-top: -1px; /* Prevent gap before the exit slant */
-            margin-bottom: -1px; /* Prevent gap after the exit slant */
-        }
-
-        .black-section-container {
-            background-color: #000;
-            position: relative;
-            margin-bottom: 0; /* Remove bottom margin */
-            padding-bottom: 0; /* Remove bottom padding */
-        }
-
-        .black-section {
-            background-color: #000;
-            padding: 5% 5% 8%;
-            color: white;
-            display: flex;
-            gap: 4rem;
-            margin-top: -1px; /* Prevent gap between SVG and section */
-            position: relative;
-            z-index: 0;
-        }
-
-        .customizable-text {
-            flex: 1;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0.3s forwards;
-        }
-
-        .customizable-heading {
-            font-family: "Montserrat", sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            color: white;
-        }
-
-        .customizable-paragraph {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            color: #ccc;
-        }
-
-        .packages-container {
-            flex: 1;
-            position: relative;
-            height: 400px;
-        }
-
-        .package {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .package1 {
-            top: 0;
-            right: 0;
-            width: 70%;
-            animation: slideInFromRight 1s ease-out 0.5s forwards;
-        }
-
-        .package3 {
-            top: 100px; /* Reduced from 150px */
-            right: 50px; /* Reduced from 100px */
-            width: 60%;
-            animation: slideInFromRight 1s ease-out 0.8s forwards;
-        }
-
-        .package2 {
-            top: 150px; /* Reduced from 220px */
-            right: -20px;
-            width: 65%;
-            animation: slideInFromRight 1s ease-out 1.1s forwards;
-        }
-
-        .features-card {
-            position: absolute;
-            bottom: -50px;
-            right: 10px;
-            width: 80%;
-            background: rgba(255, 255, 255, 0.9); /* More white, less transparent */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            animation: fadeIn 1s ease-out 1.5s forwards;
-            height: 300px; /* Make it taller */
-        }
-
-        .profile-section {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .profile-pic {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 1rem;
-        }
-
-        .profile-pic img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-name {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .card-paragraph {
-            font-family: "Montserrat", sans-serif;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #555;
-            margin-bottom: 1rem;
-        }
-
-        .check-features {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .feature img {
-            width: 16px;
-            height: 16px;
-        }
-
-        .feature-label {
-            font-family: "Montserrat", sans-serif;
-            font-size: 0.8rem;
-            color: #444;
-        }
-
-        .speech-section {
-            display: flex;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .speech-icon {
-            width: 20px; /* Reduced from 24px */
-            height: 20px; /* Reduced from 24px */
-            flex-shrink: 0;
-        }
-
-        .partner-section {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        .partner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .partner-logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 0.5rem;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem;
-        }
-
-        .partner-logo img {
-            width: 100%; /* Changed from 80% to fill the space */
-            height: 100%; /* Changed from 80% to fill the space */
-            object-fit: contain;
-        }
-
-        .partner-name {
-            font-family: "Montserrat", sans-serif;
-            font-size: 0.7rem;
-            color: #555;
-        }
-
-        @keyframes slideInFromRight {
-            from {
-                transform: translateX(50px);
+            .hamburger.active span:nth-child(2) {
                 opacity: 0;
             }
-            to {
-                transform: translateX(0);
-                opacity: 1;
+
+            .hamburger.active span:last-child {
+                transform: translateY(-11px) rotate(-45deg);
             }
-        }
-
-        @media (max-width: 768px) {
-            .black-section {
-                flex-direction: column;
-                gap: 3rem;
-                padding: 10% 5%;
-            }
-
-            .customizable-heading {
-                font-size: 2rem;
-            }
-
-            .packages-container {
-                height: 500px;
-            }
-
-            .package1 {
-                width: 90%;
-                right: -5%;
-            }
-
-            .package3 {
-                width: 80%;
-                right: 10%;
-                top: 180px;
-            }
-
-            .package2 {
-                width: 85%;
-                right: -10%;
-                top: 250px;
-            }
-
-            .features-card {
-                width: 90%;
-                bottom: 0;
-            }
-        }
-
-        /* Package Selection Section */
-        .package-section {
-            background-color: #000;
-            padding: 5% 0;
-            margin: 0 auto; /* Remove top margin for continuity */
-            display: flex;
-            gap: 4rem;
-            max-width: 90%;
-            color: white;
-        }
-
-        .card-container {
-            flex: 1;
-            position: relative;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .preconfigured-text {
-            flex: 1;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0.3s forwards;
-        }
-
-        .preconfigured-heading {
-            font-family: "Montserrat", sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            color: white; /* Ensure white text on black background */
-        }
-
-        .preconfigured-paragraph {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            color: #ccc; /* Light gray for better contrast on black */
-        }
-
-        /* Adding spacing after the black sections */
-        .black-section-container {
-            margin-bottom: 8rem; /* Add spacing after the black sections */
-            background-color: #000;
-        }
-
-        /* Modified for standalone card */
-        .features-card-standalone {
-            width: 80%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0.5s forwards;
-        }
-
-        @media (max-width: 768px) {
-            .package-section {
-                flex-direction: column;
-                gap: 3rem;
-                padding: 10% 5%;
-            }
-
-            .preconfigured-heading {
-                font-size: 2rem;
-            }
-
-            .features-card-standalone {
-                width: 100%;
-            }
-        }
-
-        /* Logo partner styles */
-        .partner-logos {
-            margin-top: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .partner-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            overflow: hidden;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.4rem;
-        }
-
-        .partner-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* Split Screen Section */
-        .split-screen-section {
-            display: flex;
-            gap: 4rem;
-            padding: 5% 0;
-            margin: 8rem auto 0;
-            max-width: 90%;
-        }
-
-        .split-column {
-            flex: 1;
-        }
-
-        .split-heading {
-            font-family: "Montserrat", sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-        }
-
-        .split-paragraph {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #333;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .split-screen-section {
-                flex-direction: column;
-                gap: 4rem;
-            }
-
-            .split-heading {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 8rem 5%;
-            position: relative;
-            max-width: 90%;
-            margin: 8rem auto 0;
-            border-radius: 30px; /* Increased radius */
         }
         
-        .faq-section::before {
-            content: '';
+        /* Center footer content */
+        .footer-section {
+            background-color: #111111;
+            color: #fff;
+            padding: 5rem 1rem 2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .footer-background {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 30px;
-            background: url('holographic.jpg') center/cover;
-            transform: scaleY(-1); /* Flip the background upside down */
-            filter: blur(30px);
+            background-repeat: repeat;
+            background-size: 48px 48px;
+            opacity: 0.15;
             z-index: 0;
         }
 
-        .faq-content {
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
-            max-width: 90%;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
             text-align: center;
         }
 
-        /* FAQ Title */
-        .faq-title {
-            font-family: "Montserrat", sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: black;
-            margin-bottom: 3rem;
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: #785dc8;
+            transform: translateY(-3px);
+        }
+
+        .social-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             text-align: center;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .footer-legal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: #fff;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .footer-top {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-legal {
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Main Section Styles */
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 85px);
+            padding: 3rem 5%;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* Second container (optional alternating style) */
+        .main-container:nth-of-type(2) {
+            background-color: #f8f9fa; /* Slight background variation */
+        }
+
+        .left-section {
+            flex: 1;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        .right-section {
+            flex: 1;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        .main-heading {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .voice-main-heading {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .main-paragraph {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #495057;
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery-container {
+            position: relative;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+        }
+
+        .gallery-image {
+            width: 50%;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+                padding: 2rem 5%;
+                position: relative; /* Add for positioning context */
+            }
+
+            .main-heading {
+                font-size: 2.8rem;
+            }
+
+            .voice-main-heading {
+                font-size: 2.8rem;
+            }
+
+            .left-section, .right-section {
+                width: 100%;
+            }
+            
+            /* Mobile-specific gallery positioning */
+            .right-section {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 50%; /* Half width */
+                height: 100%;
+                z-index: 0; /* Behind content */
+            }
+            
+            .gallery-container {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end; /* Right align */
+            }
+            
+            .gallery-image {
+                opacity: 0.2; /* Reduced opacity */
+                width: 90%; /* Slightly smaller */
+                margin-right: 5%;
+            }
+            
+            .left-section {
+                position: relative;
+                z-index: 1; /* Above image */
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 1rem 5%;
+            }
+
+            .brand-name {
+                font-size: 1rem;
+            }
+
+            .login-text {
+                font-size: 0.8rem;
+            }
+
+            .cta-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .main-heading {
+                font-size: 2.2rem;
+            }
+
+            .voice-main-heading {
+                font-size: 2.2rem;
+            }
+
+            .main-paragraph {
+                font-size: 1rem;
+            }
+
+            .video-heading {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* List styles */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            color: #495057;
+        }
+
+        .main-check-icon {
+            margin-right: 0.75rem;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 0.35rem;
+        }
+
+        /* Video Section Styles */
+        .video-section {
+            background-color: #000;
+            padding: 5rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .video-heading {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .video-player-container {
+            width: 100%;
+            max-width: 760px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .video-nav-button {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .prev-button {
+            left: -25px;
+        }
+
+        .next-button {
+            right: -25px;
+        }
+
+        .video-nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .youtube-player {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .youtube-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-subheading {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            text-align: center;
+            letter-spacing: 2px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .video-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: white;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            opacity: 1;
+            background-color: #785dc8;
+            transform: scale(1.2);
+        }
+
+        /* Responsive adjustments for video section */
+        @media (max-width: 768px) {
+            .video-heading {
+                font-size: 2.8rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .video-nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .prev-button {
+                left: 10px;
+            }
+            
+            .next-button {
+                right: 10px;
+            }
+        }
+
+        /* Bento Box Section Styles */
+        .bento-section {
+            background-color: #000;
+            padding: 5rem 1rem;
+        }
+
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .bento-cell {
+            background-color: #f8f9fa;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .bento-image {
+            max-width: 80%;
+            height: auto;
+            margin-top: 1.5rem;
+            display: block;
+        }
+
+        .bento-cell:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cell-title {
+            margin-top: auto;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Cell specific styles */
+        .cell-1 {
+            grid-column: span 1;
+        }
+
+        /* Responsive adjustments for bento box */
+        @media (max-width: 768px) {
+            .bento-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .bento-cell {
+                grid-column: span 1 !important;
+            }
+        }
+
+        /* Language Section Styles */
+        .language-section {
+            background-color: #f8f9fa;
+            padding: 5rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .language-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48'%3E%3Cg opacity='0.25'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 47L24 48L23 48L23 47L24 47ZM24 43L24 44L23 44L23 43L24 43ZM24 39L24 40L23 40L23 39L24 39ZM24 35L24 36L23 36L23 35L24 35ZM24 31L24 32L23 32L23 31L24 31ZM24 27L24 28L23 28L23 27L24 27ZM24 23L24 24L23 24L23 23L24 23ZM24 19L24 20L23 20L23 19L24 19ZM24 15L24 16L23 16L23 15L24 15ZM24 11L24 12L23 12L23 11L24 11ZM24 7L24 8L23 8L23 7L24 7ZM24 3L24 4L23 4L23 3L24 3Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48 47L48 48L47 48L47 47L48 47ZM48 43L48 44L47 44L47 43L48 43ZM48 39L48 40L47 40L47 39L48 39ZM48 35L48 36L47 36L47 35L48 35ZM48 31L48 32L47 32L47 31L48 31ZM48 27L48 28L47 28L47 27L48 27ZM48 23L48 24L47 24L47 23L48 23ZM48 19L48 20L47 20L47 19L48 19ZM48 15L48 16L47 16L47 15L48 15ZM48 11L48 12L47 12L47 11L48 11ZM48 7L48 8L47 8L47 7L48 7ZM48 3L48 4L47 4L47 3L48 3Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3Cg opacity='0.25'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48 43L48 44L47 44L47 43L48 43ZM48 39L48 40L47 40L47 39L48 39ZM48 35L48 36L47 36L47 35L48 35ZM48 31L48 32L47 32L47 31L48 31ZM48 27L48 28L47 28L47 27L48 27ZM48 23L48 24L47 24L47 23L48 23ZM48 19L48 20L47 20L47 19L48 19ZM48 15L48 16L47 16L47 15L48 15ZM48 11L48 12L47 12L47 11L48 11ZM48 7L48 8L47 8L47 7L48 7ZM48 3L48 4L47 4L47 3L48 3Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M47 47L48 47L48 48L47 48L47 47ZM43 47L44 47L44 48L43 48L43 47ZM39 47L40 47L40 48L39 48L39 47ZM35 47L36 47L36 48L35 48L35 47ZM31 47L32 47L32 48L31 48L31 47ZM27 47L28 47L28 48L27 48L27 47ZM23 47L24 47L24 48L23 48L23 47ZM19 47L20 47L20 48L19 48L19 47ZM15 47L16 47L16 48L15 48L15 47ZM11 47L12 47L12 48L11 48L11 47ZM7 47L8 47L8 48L7 48L7 47ZM3 47L4 47L4 48L3 48L3 47Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3Cg opacity='0.1'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M-0.64647 24.3536L24.3535 -0.646439L23.6464 -1.35355L-1.35358 23.6465L-0.64647 24.3536ZM-0.64647 36.3536L36.3535 -0.646439L35.6464 -1.35355L-1.35358 35.6464L-0.64647 36.3536ZM48.3535 -0.646439L-0.64647 48.3536L-1.35358 47.6465L47.6464 -1.35355L48.3535 -0.646439ZM10.3535 49.3536L49.3535 10.3536L48.6464 9.64645L9.64642 48.6464L10.3535 49.3536ZM49.3535 22.3535L22.3535 49.3535L21.6464 48.6464L48.6464 21.6464L49.3535 22.3535ZM34.3535 49.3536L49.3535 34.3536L48.6464 33.6465L33.6464 48.6464L34.3535 49.3536ZM49.3535 46.3536L46.3535 49.3536L45.6464 48.6465L48.6464 45.6465L49.3535 46.3536ZM-0.64647 12.3536L12.3535 -0.646439L11.6464 -1.35355L-1.35358 11.6465L-0.64647 12.3536Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3Cg opacity='0.1'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M-0.64647 24.3536L24.3535 -0.646439L23.6464 -1.35355L-1.35358 23.6465L-0.64647 24.3536ZM-0.64647 48.3536L48.3535 -0.646439L47.6464 -1.35355L-1.35358 47.6465L-0.64647 48.3536ZM49.3535 22.3535L22.3535 49.3535L21.6464 48.6464L48.6464 21.6464L49.3535 22.3535ZM46.3535 49.3536L49.3535 46.3536L48.6464 45.6465L45.6464 48.6465L46.3535 49.3536Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3Cg opacity='0.25'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 19H23V23H19V24H23V28H24V24H28V23H24V19Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 19H-1V23H-5V24H-1V28H0V24H4V23H0V19Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 43H23V47H19V48H23V52H24V48H28V47H24V43Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 43H-1V47H-5V48H-1V52H0V48H4V47H0V43Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 -5H23V-1H19V0H23V4H24V0H28V-1H24V-5Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48 19H47V23H43V24H47V28H48V24H52V23H48V19Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48 43H47V47H43V48H47V52H48V48H52V47H48V43Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48 -5H47V-1H43V0H47V4H48V0H52V-1H48V-5Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 48px 48px;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .language-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .language-section .main-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Ticker Styles */
+        .ticker-container {
+            width: 100%;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+
+        .ticker-content {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .ticker-rtl {
+            animation: ticker-rtl 60s linear infinite;
+        }
+
+        .ticker-ltr {
+            animation: ticker-ltr 60s linear infinite;
+        }
+
+        .ticker-item {
+            height: 40px;
+            width: auto;
+            margin: 0 1.5rem;
+        }
+
+        @keyframes ticker-rtl {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-3000px); } /* Adjust based on total width */
+        }
+
+        @keyframes ticker-ltr {
+            0% { transform: translateX(-3000px); } /* Adjust based on total width */
+            100% { transform: translateX(0); }
+        }
+
+        /* Divider Line */
+        .ticker-divider {
+            width: 80%;
+            height: 3px;
+            background-color: #785dc8;
+            border: none;
+            margin: 2rem 0;
+        }
+
+        /* Language Subheading */
+        .language-subheading {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 2.5rem;
+            color: #212529;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .ticker-item {
+                height: 30px;
+                margin: 0 1rem;
+            }
+            
+            .language-subheading {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .ticker-divider {
+                width: 90%;
+            }
+        }
+
+        /* Pricing Section Styles */
+        .pricing-section {
+            background-color: #ffffff;
+            padding: 5rem 1rem;
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .pricing-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            width: calc(33.33% - 2rem);
+            min-width: 250px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .best-value {
+            border: 2px solid #785dc8;
+            padding: 1.85rem;
+        }
+
+        .best-value-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #785dc8;
+            color: white;
+            padding: 0.3rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .plan-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .price-period {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #6c757d;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .check-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .plan-button {
+            background-color: #785dc8;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin-top: auto;
+            text-decoration: none;
+        }
+
+        .plan-button:hover {
+            background-color: #6a4db8;
+        }
+
+        /* Pricing note style */
+        .pricing-note {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1rem;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        /* Comparison Table Styles */
+        .comparison-section {
+            width: 100%;
+            margin-top: 5rem;
+        }
+
+        .comparison-heading {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+        }
+
+        .comparison-table {
+            overflow-x: auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th, 
+        .comparison-table td {
+            padding: 1.2rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .comparison-table th {
+            background-color: #f8f9fa;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: rgba(120, 93, 200, 0.05);
+        }
+        
+        /* Beta tag style */
+        .beta-tag {
+            background-color: #FABC2A;
+            color: #E0777D;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.3rem;
+            margin-left: 0.5rem;
+            display: inline-block;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Alpha tag style */
+        .alpha-tag {
+            background-color: #ABD2FA;
+            color: #294D4A;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.3rem;
+            margin-left: 0.5rem;
+            display: inline-block;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .pricing-card {
+                width: calc(50% - 2rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card {
+                width: 100%;
+                max-width: 400px;
+                margin-bottom: 3rem;
+            }
+            
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 1rem 0.75rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* FAQ Section Styles */
+        .faq-section {
+            background-color: #f8f9fa;
+            padding: 5rem 1rem;
         }
 
         .faq-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            text-align: left;
+        }
+
+        .faq-list {
+            margin-top: 3rem;
         }
 
         .faq-item {
+            background-color: #fff;
+            border-radius: 0.5rem;
             margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 1rem;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
         }
 
         .faq-question {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: black;
-            padding: 1rem;
+            padding: 1.5rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s ease;
         }
 
-        .faq-question:after {
-            content: '+';
-            font-size: 2rem;
-            line-height: 1;
+        .faq-question:hover {
+            background-color: rgba(120, 93, 200, 0.05);
+        }
+
+        .faq-question h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #785dc8;
             transition: transform 0.3s ease;
         }
 
-        .faq-question.active:after {
-            content: '−';
-            transform: rotate(180deg);
-        }
-
         .faq-answer {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: black;
-            padding: 0 1rem 1rem;
-            display: none;
-        }
-
-        .faq-question.active + .faq-answer {
-            display: block;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @media (max-width: 768px) {
-            .faq-title {
-                font-size: 4rem;
-            }
-            
-            .faq-container {
-                padding: 1.5rem;
-            }
-            
-            .faq-question {
-                font-size: 1rem;
-            }
-        }
-
-        /* Email Form Styles */
-        .email-form-container {
-            margin-top: 3rem;
-            max-width: 500px;
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .email-form {
-            display: flex;
-            position: relative;
-            margin-top: 2rem;
-        }
-        
-        .email-input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: 2px solid rgba(107, 45, 92, 0.3);
-            border-radius: 50px;
-            font-family: "Montserrat", sans-serif;
-            font-size: 1rem;
-            background-color: rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-        
-        .email-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(107, 45, 92, 0.2);
-            border-color: #6B2D5C;
-        }
-        
-        .submit-button {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-            bottom: 5px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
             padding: 0 1.5rem;
-            border: none;
-            border-radius: 50px;
-            background-color: #6B2D5C;
-            color: white;
-            font-family: "Montserrat", sans-serif;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            margin-top: 0;
+            line-height: 1.6;
+            color: #6c757d;
+        }
+
+        /* Voice-Only Pricing Section Styles */
+
+        .voice-pricing-contact {
+            color: #785dc8;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .submit-button:hover {
-            background-color: #8d3c7a;
-        }
-        
-        .form-label {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-            text-align: center;
-            display: block;
-        }
-        
-        @media (max-width: 768px) {
-            .email-form {
-                flex-direction: column;
-            }
-            
-            .submit-button {
-                position: relative;
-                right: auto;
-                top: auto;
-                bottom: auto;
-                margin-top: 1rem;
-                width: 100%;
-                padding: 1rem;
-            }
-            
-            .email-input {
-                padding: 1rem;
-            }
+            transition: 0.3s ease;
         }
 
-        /* Intellintent Section */
-        .intellintent-section {
-            position: relative;
-            text-align: center;
-            padding: 8rem 0;
-            margin: 8rem auto 0;
-            max-width: 90%;
-            overflow: visible;
+        .voice-pricing-contact:hover {
+            color: #6a4db8;
         }
-        
-        /* Add more margin for desktop only */
-        @media (min-width: 769px) {
-            .intellintent-section {
-                margin-top: 8rem; /* Changed back from 12rem to 8rem */
-            }
-            
-            /* Hide blob on desktop */
-            .intellintent-background {
-                display: none;
-            }
-            
-            /* Add underline to subtitle on desktop */
-            .intellintent-subtitle {
-                border-bottom: 3px solid #6B2D5C;
-                padding-bottom: 1rem;
-                display: inline-block;
-            }
+
+        .voice-pricing-section {
+            background-color: #ffffff;
+            padding: 5rem 1rem;
         }
-        
-        .intellintent-background {
-            position: absolute;
-            top: 85%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: auto;
-            z-index: 0;
-            filter: blur(30px);
-        }
-        
-        .intellintent-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .intellintent-title {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #6B2D5C;
-            margin-bottom: 1.5rem;
-        }
-        
-        .intellintent-subtitle {
-            font-family: "Montserrat", sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: black;
-            max-width: 80%;
+
+        .voice-pricing-container {
+            max-width: 1200px;
             margin: 0 auto;
-        }
-        
-        @media (max-width: 768px) {
-            .intellintent-title {
-                font-size: 1.2rem;
-            }
-            
-            .intellintent-subtitle {
-                font-size: 2rem;
-            }
-            
-            .intellintent-background {
-                top: 50%; /* Return to center for mobile */
-            }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Footer Styles */
-        .footer {
-            background-color: black;
-            color: white;
-            padding: 1.5rem 0;
+        .voice-pricing-cards {
             display: flex;
-            align-items: center;
             justify-content: center;
             gap: 2rem;
-            margin-top: 8rem;
+            margin: 3rem 0;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .voice-pricing-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            width: calc(33.33% - 2rem);
+            min-width: 250px;
+            position: relative;
+            transition: transform 0.3s ease;
         }
         
-        .footer-logo {
-            width: 40px;
+        /* Make sure the width on mobile matches */
+        @media (max-width: 768px) {
+            .voice-pricing-card {
+                width: 100%;
+                max-width: 400px;
+                min-width: 300px; /* Add minimum width to prevent being too skinny */
+                margin-bottom: 3rem;
+            }
+        }
+
+        .voice-pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .voice-best-value {
+            border: 2px solid #785dc8;
+            padding: 1.85rem;
+        }
+
+        .voice-best-value-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #785dc8;
+            color: white;
+            padding: 0.3rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .voice-plan-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .voice-plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .voice-price-period {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #6c757d;
+        }
+
+        .voice-plan-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .voice-plan-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .voice-check-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .voice-plan-button {
+            background-color: #785dc8;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin-top: auto;
+            text-decoration: none;
+        }
+
+        .voice-plan-button:hover {
+            background-color: #6a4db8;
+        }
+
+        /* Voice-Only Pricing note style */
+        .voice-pricing-note {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1rem;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        /* Responsive adjustments for voice pricing */
+        @media (max-width: 992px) {
+            .voice-pricing-card {
+                width: calc(50% - 2rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .voice-pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .voice-pricing-card {
+                width: 100%;
+                max-width: 400px;
+                margin-bottom: 3rem;
+            }
+            
+            .voice-main-heading {
+                font-size: 2.8rem;
+            }
+
+            th {
+                font-size: 0.5rem;
+            }
+        }
+
+        /* Restore button styles for CTA button */
+        .cta-button {
+            background-color: #785dc8;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.3rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: #6a4db8;
+        }
+        
+        /* Restore logo spinning animation */
+        .logo {
             height: 40px;
-            animation: spin 8s linear infinite;
+            margin-right: 0.75rem;
+            animation: logoSpin 10s linear infinite;
         }
         
-        @keyframes spin {
+        @keyframes logoSpin {
             from {
                 transform: rotate(0deg);
             }
@@ -1498,1141 +1347,626 @@
             }
         }
         
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .footer-link {
-            font-family: "Montserrat", sans-serif;
+        /* Make table headers smaller */
+        .comparison-table th {
             font-size: 0.9rem;
-            text-transform: uppercase;
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-        
-        .footer-link:hover {
-            opacity: 0.7;
-        }
-        
-        .copyright-text {
-            font-family: "Montserrat", sans-serif;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.6); /* Darker than white */
-            margin-left: 2rem; /* Space after Jobs link */
-        }
-        
-        @media (max-width: 768px) {
-            .footer {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 2rem 0;
-            }
-            
-            .footer-links {
-                gap: 1.5rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .footer-link {
-                font-size: 0.8rem;
-            }
-            
-            .copyright-text {
-                margin-left: 0; /* Remove left margin on mobile */
-                margin-top: 1rem; /* Add top margin instead */
-                text-align: center;
-            }
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 8rem 5%;
-            position: relative;
-            max-width: 90%;
-            margin: 8rem auto;
-            text-align: center;
-        }
-        
-        .contact-title {
-            font-family: "Montserrat", sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #6B2D5C;
-            margin-bottom: 3rem;
-        }
-        
-        .contact-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-        
-        .contact-tab {
-            padding: 1rem 2rem;
-            border: none;
-            background: none;
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-            cursor: pointer;
-            position: relative;
-            opacity: 0.6;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-tab.active {
-            opacity: 1;
-            color: #6B2D5C;
-        }
-        
-        .contact-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 20%;
-            right: 20%;
-            height: 3px;
-            background-color: #6B2D5C;
-        }
-        
-        .contact-form-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .contact-form {
-            display: none;
-        }
-        
-        .contact-form.active {
-            display: block;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
             text-align: left;
         }
-        
-        .form-label {
-            display: block;
-            font-family: "Montserrat", sans-serif;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid rgba(107, 45, 92, 0.3);
-            border-radius: 8px;
-            font-family: "Montserrat", sans-serif;
-            font-size: 1rem;
-            background-color: rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(107, 45, 92, 0.2);
-            border-color: #6B2D5C;
-        }
-        
-        .form-submit {
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 50px;
-            background-color: #6B2D5C;
-            color: white;
-            font-family: "Montserrat", sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 1rem;
-        }
-        
-        .form-submit:hover {
-            background-color: #8d3c7a;
-        }
-        
-        @media (max-width: 768px) {
-            .contact-title {
-                font-size: 2rem;
-            }
-            
-            .contact-tab {
-                padding: 0.8rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .package {
-                display: none; /* Hide packages completely on mobile */
-            }
-            
-            /* Reorder package section elements on mobile */
-            .package-section {
-                display: flex;
-                flex-direction: column-reverse; /* Text first, card second on mobile */
-            }
-            
-            .card-container {
-                margin-top: 2rem; /* Reduced space between text and card (from 4rem to 2rem) */
-            }
-            
-            .preconfigured-text {
-                margin-bottom: 1rem; /* Reduced space after text (from 2rem to 1rem) */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .package-section {
-                flex-direction: column;
-            }
-            
-            .card-container {
-                order: 2;
-            }
-            
-            .preconfigured-text {
-                order: 1;
-            }
-        }
-
-        /* Specific animation for packages */
-        @keyframes fadeInFromRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        .package {
-            opacity: 0; /* Start invisible */
-            animation: fadeInFromRight 1s ease forwards;
-            animation-play-state: paused; /* Start paused */
-            animation-delay: 0.8s; /* Longer delay for packages */
-        }
-        
-        .package.is-visible {
-            animation-play-state: running;
-        }
-        
-        /* Different delays for each package for staggered effect */
-        .package1.is-visible {
-            animation-delay: 0.6s;
-        }
-        
-        .package2.is-visible {
-            animation-delay: 0.8s;
-        }
-        
-        .package3.is-visible {
-            animation-delay: 1.0s;
-        }
-
-        @media (max-width: 768px) {
-            .tagline {
-                font-size: 2rem; /* Reduced from 3rem */
-                width: 90%; /* Increased width for better text wrapping */
-            }
-            
-            .emoji-grid, 
-            .emoji-grid-left {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr); /* 3 tiles horizontally */
-                grid-template-rows: repeat(6, auto); /* 6 rows vertically */
-                gap: 0.5rem; /* Slightly reduced gap for tighter layout */
-            }
-            
-            .slant-transition {
-                display: none; /* Hide the slanted SVG on mobile */
-            }
-            
-            .customizable-heading,
-            .preconfigured-heading {
-                font-size: 1.8rem; /* Reduced from 2.5rem */
-            }
-            
-            .feature img {
-                width: 12px; /* Further reduced from 14px to 12px */
-                height: 12px; /* Further reduced from 14px to 12px */
-            }
-            
-            .feature-label {
-                font-size: 0.6rem; /* Further reduced from 0.7rem to 0.6rem */
-            }
-
-            /* Add spacing at the top of black section when slant is removed */
-            .black-section-container {
-                padding-top: 3rem;
-            }
-        }
     </style>
-
+</head>
+<body>
+    <!-- Navbar -->
     <nav class="navbar">
-        <div class="nav-left"><a href="#">The Turing Center</a></div>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        <ul class="nav-links">
-            <li><a href="#" data-text="Olive AI"><span class="original-text">Olive AI</span><span class="scrambled-text"></span></a></li>
-            <li><a href="#" data-text="Intellintent"><span class="original-text">Intellintent</span><span class="scrambled-text"></span></a></li>
-            <li><a href="#" data-text="Contact"><span class="original-text">Contact</span><span class="scrambled-text"></span></a></li>
-        </ul>
+        <div class="logo-container">
+            <img src="static/logos/black logo.svg" alt="The Turing Center Logo" class="logo">
+            <div class="brand-name">THE TURING CENTER</div>
+        </div>
+        <div class="nav-links">
+            <a href="#pricing-section" class="nav-link">PRICING</a>
+            <a href="#faq-section" class="nav-link">FAQ</a>
+        </div>
+        <div class="nav-right">
+            <a href="contact.html" class="cta-button">BOOK A DEMO</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-menu">
+            <a href="#pricing-section" class="mobile-link">PRICING</a>
+            <a href="#faq-section" class="mobile-link">FAQ</a>
+            <a href="contact.html" class="mobile-link cta-mobile">BOOK A DEMO</a>
+        </div>
     </nav>
 
-    <div class="landing">
-        <div class="tagline">ACCELERATING THE MASS ADOPTION OF AI</div>
-        <div class="rotating-slogans">
-            <span class="slogan"></span>
-        </div>
-    </div>
-
-    <!--START FIRST OLIVE SECTION-->
-    <div class="olive-section">
-        <div class="introducing">Introducing</div>
-        <div class="olive-title">OLIVE AI</div>
-        <div class="olive-subtitle aligned">Your industry-agnostic virtual receptionist</div>
-        <div class="feature-container">
-            <div class="feature-box">
-                <img src="call icon.svg" alt="Call Icon" class="feature-icon">
-                <div class="feature-name">Answer Every Call</div>
-                <div class="feature-description">
-                    Sometimes one phone isn't enough. With Olive, you'll never be too busy for a potential client, patient, or customer ever again.
-                </div>
+    <!-- Main Section -->
+    <main class="main-container">
+        <section class="left-section">
+            <h1 class="main-heading">MEET OLIVE</h1>
+            <p class="main-paragraph">The Optimized Linguistic Interactive Voice Engine that acts 24/7 as your business's AI assistant to:</p>
+            <ul class="feature-list">
+                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Never miss a call</li>
+                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Automate workflows</li>
+                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Eliminate stress</li>
+                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Capture leads</li>
+                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Save you money</li>
+            </ul>
+        </section>
+        <section class="right-section">
+            <div class="gallery-container">
+                <img src="static/avatars/olive.png" alt="Olive" class="gallery-image">
             </div>
-            <div class="feature-box">
-                <img src="api icon.svg" alt="API Icon" class="feature-icon">
-                <div class="feature-name">Automate Every Task</div>
-                <div class="feature-description">
-                    Be more efficient. Olive executes commands pertinent to the conversation in real-time within your existing software.
-                </div>
-            </div>
-            <div class="feature-box">
-                <img src="mail icon.svg" alt="Mail Icon" class="feature-icon">
-                <div class="feature-name">Manage Every Mailbox</div>
-                <div class="feature-description">
-                    Phase-out junk. Detect spam, intelligently categorize, and archive emails with Olive for you and your team - no need to change services.
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--END FIRST OLIVE SECTION-->
+        </section>
+    </main>
 
-    <!--START SECOND OLIVE SECTION-->
-    <div class="olive-section2">
-        <div class="introducing aligned-right">Olive Is The</div>
-        <div class="olive-title aligned-right">PERFECT PARTNER</div>
-        <div class="olive-subtitle aligned-right">Delegate As Much Of The Job As You Want</div>
-        <div class="feature-container">
-            <div class="feature-box">
-                <img src="call-forward icon.svg" alt="Call Icon" class="feature-icon">
-                <div class="feature-name">Routing & Reminders</div>
-                <div class="feature-description">
-                    Able to understand urgency, Olive can route calls to the right person, provide reminders, and dispose of unwanted solicitations.
-                </div>
+    <!-- Second Main Section (Flipped) -->
+    <main class="main-container">
+        <section class="right-section">
+            <div class="gallery-container">
+                <img src="static/avatars/april.png" alt="April" class="gallery-image">
             </div>
-            <div class="feature-box">
-                <img src="live-listen icon.svg" alt="API Icon" class="feature-icon">
-                <div class="feature-name">Live-Listening</div>
-                <div class="feature-description">
-                    Olive can listen in on calls taken by your team and perform tasks while providing transcriptions and context-relevant details in real-time.
+        </section>
+        <section class="left-section">
+            <h1 class="main-heading">100% YOURS</h1>
+            <p class="main-paragraph">OLIVE is fully customizable to your business's needs, and we can help configure it however you wish.</p>
+            <ul class="feature-list">
+                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Manual or assisted setup</li>
+                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Hundreds of voices and personalities</li>
+                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Uploadable knowledge bases</li>
+                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Personable and professional</li>
+                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Says what you want, when you want</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <h1 class="video-heading">WATCH OLIVE WORK</h1>
+            <div class="video-player-container">
+                <button class="video-nav-button prev-button" onclick="prevVideo()">❮</button>
+                <div class="youtube-player">
+                    <iframe 
+                        id="video-frame"
+                        width="760" 
+                        height="415" 
+                        src="https://www.youtube.com/embed/1WCOjiKI8vU" 
+                        title="Olive Demo Video" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
+                <button class="video-nav-button next-button" onclick="nextVideo()">❯</button>
             </div>
-            <div class="feature-box">
-                <img src="upsell icon.svg" alt="Mail Icon" class="feature-icon">
-                <div class="feature-name">Habit Detection</div>
-                <div class="feature-description">
-                    Suggestions by Olive regarding a patient's needs or a customer's preferences can help ensure a maximum LTV or AOV.
-                </div>
+            <p class="video-subheading" id="video-description">AS A VIRTUAL HOSTESS</p>
+            <div class="video-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </div>
-    </div>
-    <!--END SECOND OLIVE SECTION-->
+    </section>
 
-    <!--START LANGUAGE SECTION-->
-    <div class="language-section">
-        <div class="language-headline">Any language, anywhere</div>
-        <div class="language-grid" id="languageGrid">
-            <!-- Language tiles will be generated by JavaScript -->
+    <!-- Bento Box Section -->
+    <section class="bento-section">
+        <div class="bento-container">
+            <div class="bento-cell cell-1">
+                <h3 class="cell-title">Integrate with your restaurant/cafe/diner</h3>
+                <img src="static/icons/restaurant software.svg" alt="Restaurant Software Integration" class="bento-image">
+            </div>
+            <div class="bento-cell cell-1">
+                <h3 class="cell-title">Integrate with your dental/veterinary/medical practice</h3>
+                <img src="static/icons/practice software.svg" alt="Restaurant Software Integration" class="bento-image">
+            </div>
+            <div class="bento-cell cell-1">
+                <h3 class="cell-title">Or whatever industry you're in!</h3>
+            </div>
+            <div class="bento-cell cell-1">
+                <h3 class="cell-title">Over 3,000 integrations and counting!</h3>
+            </div>
         </div>
-        <div class="language-caption">
-            Do business with everyone. Olive can speak in over 75+ languages.
-        </div>
-        <div class="button-container">
-            <button class="glass-button">Book a free Demo today</button>
-        </div>
-    </div>
-    <!--END LANGUAGE SECTION-->
+    </section>
 
-    <!--START FIRST APPLICABLE SECTION-->
-    <div class="applicable-section">
-        <div class="applicable-text">
-            <h5 class="applicable-tag">Applicable to all</h5>
-            <div class="applicable-title">Any company that utilizes a phone in any way stands to benefit from Olive</div>
-            <p class="applicable-description">
-                Your customers, clients, and patients deserve the fastest and most efficient service possible. No call will ever again go unanswered. Whether it's about FAQs, booking appointments, or processing requests, each task will be executed with precision.
-            </p>
-            <p class="applicable-description">
-                Olive makes hold times go extinct (which your callers will thank you for) while simultaneously reducing operational costs and freeing up your staff for higher-value work. The possibilities don't end there. Billing, reminders, follow-ups - the sky's the limit regarding AI.
-            </p>
-            <p class="applicable-description">
-                The industries we serve are infinite - the impact, immediate. No matter the size or sector, integrating Olive into your infrastructure gives you a competitive edge. It's not just about automation - it's about elevating the way you do business.
-            </p>
-        </div>
-        <div class="emoji-grid">
-            <!-- Emojis generated by JavaScript -->
-        </div>
-    </div>
-    <!--END FIRST APPLICABLE SECTION-->
-
-    <!--START SECOND APPLICABLE SECTION-->
-    <div class="applicable-section-reverse">
-        <div class="applicable-text">
-            <h5 class="applicable-tag-alt">Everywhere all at once</h5>
-            <div class="applicable-title">For the professional individual with exceptional standards</div>
-            <p class="applicable-description">
-                Imagine never having to deal with long wait times, frustrating hold music, or unanswered calls. Your personal AI agent, Olive, is here to handle all of that and simplify your life. Inbound or outbound, put your business in autopilot.
-            </p>
-            <p class="applicable-description">
-                There's more to life than work. Book reservations to your favorite restaurants, buy tickets to a local concert, find the best deals on flights, schedule appointments, and even order groceries (or whatever you can think of) at the touch of a button.
-            </p>
-            <p class="applicable-description">
-                Whether it's for your personal brand or your personal life, your time is your most valuable asset. Let's spend it wisely and further our goals while taking back control with Olive AI from The Turing Center.
-            </p>
-        </div>
-        <div class="emoji-grid-left" id="secondEmojiGrid">
-            <!-- Second set of emojis -->
-        </div>
-    </div>
-    <!--END SECOND APPLICABLE SECTION-->
-
-    <!--START SLANTED SECTION-->
-    <div class="slanted-container">
-        <img src="slanted.svg" alt="Slanted Transition" class="slant-transition">
-        <div class="black-section-container">
-            <div class="black-section">
-                <div class="customizable-text">
-                    <h2 class="customizable-heading">Olive is fully customizable</h2>
-                    <p class="customizable-paragraph">
-                        No two businesses or individuals operate the same way - and neither should your AI assistant. Olive is designed to be fully tailored to your exact requirements, ensuring a seamless experience that adapts to your workflow, preferences, and needs.
-                    </p>
-                    <p class="customizable-paragraph">
-                        Industry-specific assisted dataset curation (or manually do it yourself), customizable voices and personalities with tailored responses, and multi-language support means that when Olive picks up a call, it's like having a conversation with the most knowledgeable and experienced employee in the building.
-                    </p>
-                    
-                    <!-- Static partner logos -->
-                    <div class="partner-logos">
-                        <div class="partner-icon">
-                            <img src="static/chyron/Anthropic.png" alt="Anthropic">
-                        </div>
-                        <div class="partner-icon">
-                            <img src="static/chyron/azure.png" alt="Azure">
-                        </div>
-                        <div class="partner-icon">
-                            <img src="static/chyron/chatgpt.png" alt="ChatGPT">
-                        </div>
-                        <div class="partner-icon">
-                            <img src="static/chyron/eleven.png" alt="Eleven">
-                        </div>
-                        <div class="partner-icon">
-                            <img src="static/chyron/gemini.png" alt="Gemini">
-                        </div>
-                        <div class="partner-icon">
-                            <img src="static/chyron/playht.png" alt="PlayHT">
-                        </div>
-                        <div class="partner-icon">
-                            <img src="static/chyron/groq.png" alt="Groq">
-                        </div>
-                        <div class="partner-icon">
-                            <img src="static/chyron/meta.png" alt="Meta">
-                        </div>
-                    </div>
-                </div>
-                <div class="packages-container">
-                    <img src="package1.svg" alt="Package 1" class="package package1">
-                    <img src="package3.svg" alt="Package 3" class="package package3">
-                    <img src="package2.svg" alt="Package 2" class="package package2">
+    <!-- Language Section -->
+    <section class="language-section">
+        <div class="language-container">
+            <h1 class="main-heading">ANY LANGUAGE, ANYWHERE</h1>
+            
+            <!-- Language Ticker (Right to Left) -->
+            <div class="ticker-container">
+                <div id="languages-ticker" class="ticker-content ticker-rtl">
+                    <!-- Will be populated dynamically -->
                 </div>
             </div>
             
-            <!--START PACKAGE SELECTION SECTION-->
-            <div class="package-section">
-                <div class="card-container">
-                    <div class="features-card-standalone">
-                        <div class="profile-section">
-                            <div class="profile-pic">
-                                <img src="avatar.jpg" alt="Anna Profile">
-                            </div>
-                            <div class="profile-name">Anna</div>
-                        </div>
-                        <p class="card-paragraph">
-                            Ideal for veterinary clinics and assistants, Anna cares for your furry friends and can detect when there's stress on the call, quickly routing the call to the vet themself.
-                        </p>
-                        <div class="check-features">
-                            <div class="feature">
-                                <img src="check.svg" alt="Check">
-                                <span class="feature-label">Calming</span>
-                            </div>
-                            <div class="feature">
-                                <img src="check.svg" alt="Check">
-                                <span class="feature-label">Efficient</span>
-                            </div>
-                            <div class="feature">
-                                <img src="check.svg" alt="Check">
-                                <span class="feature-label">Predictive</span>
-                            </div>
-                        </div>
-                        <div class="speech-section">
-                            <img src="speech.svg" alt="Speech" class="speech-icon">
-                            <p class="card-paragraph" style="margin-bottom: 0">
-                                Hi, I'm Anna. Welcome to Dr. Miller's office. How may I help you today?
-                            </p>
-                        </div>
-                        <div class="partner-section">
-                            <div class="partner">
-                                <div class="partner-logo">
-                                    <img src="groq.png" alt="Groq">
-                                </div>
-                                <span class="partner-name">groq</span>
-                            </div>
-                            <div class="partner">
-                                <div class="partner-logo">
-                                    <img src="eleven.png" alt="ElevenLabs">
-                                </div>
-                                <span class="partner-name">ElevenLabs</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="preconfigured-text">
-                    <h2 class="preconfigured-heading">Preconfigured Packages Available</h2>
-                    <p class="preconfigured-paragraph">
-                        Want a faster setup? We offer preconfigured packages tailored to specific industries and use cases. Customization will still be available if anything needs changing down the line.
-                    </p>
-                    <p class="preconfigured-paragraph">
-                        We are continuously conducting studies to determine which voices perform best across different sectors. Our preconfigured packages come with recommendations made for your industry, but you always have the flexibility to choose what best represents your brand.
-                    </p>
-                </div>
-            </div>
-            <!--END PACKAGE SELECTION SECTION-->
-        </div>
-    </div>
-    <!--END SLANTED SECTION-->
-
-    <!--START SPLIT SCREEN SECTION-->
-    <div class="split-screen-section">
-        <div class="split-column">
-            <h2 class="split-heading">Seamlessly integrate into your existing software</h2>
-            <p class="split-paragraph">
-                Olive seamlessly integrates with your existing software, ensuring a frictionless experience for both businesses and customers. Whether you're using scheduling platforms, POS systems, or KDS solutions, you can expect an effortless enhancement in efficiency without disrupting your workflow.
-            </p>
-            <p class="split-paragraph">
-                From booking appointments to processing orders and managing customer interactions, Olive works within your current tools, automating tasks and reducing manual effort. No need for costly software changes - simply plug in and let it optimize your operations.
-            </p>
-        </div>
-        <div class="split-column">
-            <h2 class="split-heading">Level up with Olive's business intelligence hub</h2>
-            <p class="split-paragraph">
-                Unlock deeper insights and optimize your operations with the Business Intelligence Hub. Olive doesn't just handle calls - it gathers valuable data, identifies trends, and provides actionable analytics to help you make smarter business decisions. Track call volumes, customer inquiries, peak service times, and more, all in one intuitive report.
-            </p>
-            <p class="split-paragraph">
-                Whether it's refining customer interactions, improving scheduling efficiency, or boosting sales, Olive's intelligence hub gives you the data-driven edge to stay ahead of the competition.
-            </p>
-        </div>
-    </div>
-    <!--END SPLIT SCREEN SECTION-->
-
-    <!--START CONTACT SECTION-->
-    <div id="contact" class="contact-section">
-        <h2 class="contact-title">Contact Us</h2>
-        
-        <div class="contact-tabs">
-            <button class="contact-tab active" data-tab="demo">Book a Demo</button>
-            <button class="contact-tab" data-tab="inquiry">General Inquiry</button>
-        </div>
-        
-        <div class="contact-form-container">
-            <!-- Demo Form -->
-            <form action="https://formsubmit.co/sam@theturingcenter.com" method="POST" class="contact-form active" id="demo-form">
-                <input type="hidden" name="_subject" value="Demo Request">
-                <input type="hidden" name="_captcha" value="false">
-                
-                <div class="form-group">
-                    <label for="demo-name" class="form-label">Full Name</label>
-                    <input type="text" id="demo-name" name="name" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="demo-email" class="form-label">Email Address</label>
-                    <input type="email" id="demo-email" name="email" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="demo-company" class="form-label">Company Name</label>
-                    <input type="text" id="demo-company" name="company" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="demo-phone" class="form-label">Phone Number</label>
-                    <input type="tel" id="demo-phone" name="phone" class="form-input">
-                </div>
-                
-                <button type="submit" class="form-submit">Request Demo</button>
-            </form>
+            <!-- Divider Line -->
+            <hr class="ticker-divider">
             
-            <!-- Inquiry Form -->
-            <form action="https://formsubmit.co/sam@theturingcenter.com" method="POST" class="contact-form" id="inquiry-form">
-                <input type="hidden" name="_subject" value="General Inquiry">
-                <input type="hidden" name="_captcha" value="false">
-                
-                <div class="form-group">
-                    <label for="inquiry-name" class="form-label">Full Name</label>
-                    <input type="text" id="inquiry-name" name="name" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="inquiry-email" class="form-label">Email Address</label>
-                    <input type="email" id="inquiry-email" name="email" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="inquiry-subject" class="form-label">Subject</label>
-                    <input type="text" id="inquiry-subject" name="subject" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="inquiry-message" class="form-label">Message</label>
-                    <textarea id="inquiry-message" name="message" class="form-input" rows="5" required></textarea>
-                </div>
-                
-                <button type="submit" class="form-submit">Send Message</button>
-            </form>
-        </div>
-    </div>
-    <!--END CONTACT SECTION-->
-
-    <!--START FAQ SECTION-->
-    <div class="faq-section">
-        <div class="faq-content">
-            <h2 class="faq-title">F.A.Q</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">What is Olive AI and how does it work?</div>
-                    <div class="faq-answer">
-                        Olive is an AI voice assistant capable of answering unlimited simultaneous calls 24/7 while executing tasks pertinent to the conversation. Olive taps into your existing software infrastructure and phone number, allowing for a seamless workflow and efficient experience for all of your callers.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How can Olive AI benefit my business?</div>
-                    <div class="faq-answer">
-                        Olive can benefit your business many different ways. It's capable of fully automating a variety of tasks which can allow your employees to focus on higher-value work. It can also work as a teammate to your employees by taking over menial aspects of their job, making them more efficient. Also, according to Forbes, businesses lose 75$ billion a year due to poor customer support. You won't fall victim to this statistic with Olive. Every phone call, even ones made after hours, will be answered. We also put an end to dial-tone menus. Your customers know why they're calling you. Let's help them get to the point faster.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How secure is Olive AI for handling sensitive information?</div>
-                    <div class="faq-answer">
-                        We implement end-to-end encryption, secure API integrations, and strict access controls to safeguard sensitive information. Olive follows industry compliance standards (such as HIPAA for healthcare, PCI-DSS for payments, and GDPR for data privacy) to meet the security needs of businesses across different industries.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">What kind of businesses can use Olive AI?</div>
-                    <div class="faq-answer">
-                        Any business that hires someone to answer a phone, or delegates that responsibility, or utilizes a phone in any way can benfit from Olive. Together we'll make work easier, more profitable, and less stressful.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How much does Olive AI cost?</div>
-                    <div class="faq-answer">
-                        We offer modular pricing depending on your needs. Prices can vary based on the number of calls you receive, the complexity of the tasks you need Olive to perform, the number of locations you need covered, and the LLM and TTS providers you choose.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How long does it take to set up Olive AI?</div>
-                    <div class="faq-answer">
-                        It depends on the complexity of your business and the number of locations you need covered. We offer a fast-track setup for a quicker turnaround.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Can Olive AI handle high call volumes?</div>
-                    <div class="faq-answer">
-                        Yes, Olive is designed to handle high call volumes. We have a robust infrastructure that can scale to meet your needs.
-                    </div>
+            <!-- 1x1 Ticker (Left to Right) -->
+            <div class="ticker-container">
+                <div id="flags-ticker" class="ticker-content ticker-ltr">
+                    <!-- Will be populated dynamically -->
                 </div>
             </div>
-        </div>
-    </div>
-    <!--END FAQ SECTION-->
-
-    <!--START INTELLINTENT SECTION-->
-    <div class="intellintent-section">
-        <img src="intel blob.svg" alt="Intellintent Background" class="intellintent-background">
-        <div class="intellintent-content">
-            <h4 class="intellintent-title">Intellintent</h4>
-            <div class="intellintent-subtitle">One protocol to rule them all</div>
             
-            <!-- Email Form -->
-            <div class="email-form-container">
-                <label for="email" class="form-label">Sign up for early access here</label>
-                <form action="https://formsubmit.co/sam@theturingcenter.com" method="POST" class="email-form">
-                    <input type="email" name="email" id="email" class="email-input" placeholder="Enter your email address" required>
-                    <input type="hidden" name="_subject" value="New Intellintent Subscriber">
-                    <input type="hidden" name="_captcha" value="false">
-                    <button type="submit" class="submit-button">Submit</button>
-                </form>
+            <h3 class="language-subheading">DO BUSINESS WITH EVERYONE. OLIVE SPEAKS IN OVER 75+ LANGUAGES.</h3>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing-section">
+        <div class="pricing-container">
+            <h1 class="main-heading">CHOOSE YOUR PLAN</h1>
+            
+            <div class="pricing-cards">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <h2 class="plan-name">RECEPTIONIST</h2>
+                    <p class="plan-price">$200<span class="price-period">/month</span></p>
+                    <ul class="plan-features">
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> 500 voice minutes</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> $0.25 overage/voice minute</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Up to 5 syncronous calls</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Google suite automation only</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Unlimited operations</li>
+                    </ul>
+                    <a href="contact.html" class="plan-button">GET STARTED</a>
+                </div>
+                
+                <!-- Pro Plan (Best Value) -->
+                <div class="pricing-card best-value">
+                    <div class="best-value-tag">POPULAR CHOICE</div>
+                    <h2 class="plan-name">ASSISTANT</h2>
+                    <p class="plan-price">$500<span class="price-period">/month</span></p>
+                    <ul class="plan-features">
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> 1,700 voice minutes</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> $0.25 overage/voice minute</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Up to 20 syncronous calls</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Full software automation</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Unlimited operations</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Access to beta features</li>
+                    </ul>
+                    <a href="contact.html" class="plan-button">GET STARTED</a>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <h2 class="plan-name">EXECUTIVE</h2>
+                    <p class="plan-price">$$$$<span class="price-period">/month</span></p>
+                    <ul class="plan-features">
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Unlimited voice minutes</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Zero overage charges</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Unlimited syncronous calls</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Full software automation</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Unlimited operations</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Access to beta features</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Priced to your needs</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Priority support</li>
+                    </ul>
+                    <a href="contact.html" class="plan-button">GET STARTED</a>
+                </div>
+            </div>
+            
+            <p class="pricing-note">*All plans are priced per location.</p>
+            
+            <!-- Comparison Chart -->
+            <div class="comparison-section">
+                <h2 class="comparison-heading">FEATURE COMPARISON</h2>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>FEATURE</th>
+                                <th>RECEPTIONIST</th>
+                                <th>ASSISTANT</th>
+                                <th>EXECUTIVE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Natural Language Processing</td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Contextual Awareness</td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Fully Customizable</td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>24/7 Availability</td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Multilingual Support</td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Inbound/Outbound Calls</td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Inbound/Outbound Texts</td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Call Forwarding/Routing</td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Call Transcriptions Available</td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Google Suite Automation</td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Full Software Automation</td>
+                                <td></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Live-Listening Feature <span class="beta-tag">BETA</span></td>
+                                <td></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Data Analytics Dashboard <span class="alpha-tag">ALPHA</span></td>
+                                <td></td>
+                                <td></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                            <tr>
+                                <td>Business Intelligence Hub <span class="alpha-tag">ALPHA</span></td>
+                                <td></td>
+                                <td></td>
+                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-    <!--END INTELLINTENT SECTION-->
+    </section>
 
-    <!--START FOOTER-->
-    <footer class="footer">
-        <img src="logo.svg" alt="The Turing Center Logo" class="footer-logo">
-        <div class="footer-links">
-            <a href="#" class="footer-link">Contact</a>
-            <a href="#" class="footer-link">Studies</a>
-            <a href="#" class="footer-link">Blog</a>
-            <a href="#" class="footer-link">Jobs</a>
+    <!-- Voice-Only Pricing Section -->
+    <section class="voice-pricing-section">
+        <div class="voice-pricing-container">
+            <h1 class="voice-main-heading">ONLY NEED VOICE?</h1>
+            
+            <div class="voice-pricing-cards">
+                <!-- Basic Voice Plan -->
+                <div class="voice-pricing-card">
+                    <h2 class="voice-plan-name">LITTLE VOICE</h2>
+                    <p class="voice-plan-price">$50<span class="voice-price-period">/month</span></p>
+                    <ul class="voice-plan-features">
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> 200 voice minutes</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> $0.25 overage/voice minute</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Call routing/forwarding</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Transcriptions available</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> 1 call at a time</li>
+                    </ul>
+                    <a href="contact.html" class="voice-plan-button">GET STARTED</a>
+                </div>
+                
+                <!-- Standard Voice Plan -->
+                <div class="voice-pricing-card voice-best-value">
+                    <div class="voice-best-value-tag">POPULAR CHOICE</div>
+                    <h2 class="voice-plan-name">LOTSA VOICE</h2>
+                    <p class="voice-plan-price">$100<span class="voice-price-period">/month</span></p>
+                    <ul class="voice-plan-features">
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> 400 voice minutes</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> $0.25 overage/voice minute</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Call routing/forwarding</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Transcriptions available</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Up to 2 syncronous calls</li>
+                    </ul>
+                    <a href="contact.html" class="voice-plan-button">GET STARTED</a>
+                </div>
+                
+                <!-- Premium Voice Plan -->
+                <div class="voice-pricing-card">
+                    <h2 class="voice-plan-name">MUCHO VOICE</h2>
+                    <p class="voice-plan-price">$300<span class="voice-price-period">/month</span></p>
+                    <ul class="voice-plan-features">
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> 1,200 voice minutes</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> $0.25 overage/voice minute</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Call routing/forwarding</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Transcriptions available</li>
+                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Up to 3 syncronous calls</li>
+                    </ul>
+                    <a href="contact.html" class="voice-plan-button">GET STARTED</a>
+                </div>
+            </div>
+            
+            <p class="voice-pricing-note">Need more minutes? <a href="contact.html" class="voice-pricing-contact">Contact sales.</a> *All voice plans include multilingual support and 24/7 availability.</p>
         </div>
-        <span class="copyright-text">© 2025 The Turing Center, Inc. All rights reserved.</span>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq-section">
+        <div class="faq-container">
+            <h1 class="main-heading">FREQUENTLY ASKED QUESTIONS</h1>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are voice minutes?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Voice minutes are the minutes counted while OLIVE is speaking. So, if a call lasts 5 minutes, but OLIVE only speaks for 3 of them, that entire call only counts as 3 voice minutes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is the Live-Listening Feature?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Live-Listening Feature is perfect for businesses that may not be ready to adopt the full scope of AI, but could still benefit from an assistant. With Live-Listening, your employees can answer calls while OLIVE listens in and executes tasks in the background that are pertinent to the conversation. This helps reduce errors, increase efficiency, and improve caller satisfaction.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I keep my business's phone number with OLIVE?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Of course! We understand that you probably have had a number that's been around for awhile and which many people are familiar with. We want to make OLIVE's adoption as smooth as possible - keeping your number is a big part of that. However, if you would like a new number, we can certainly provide that as well (at a very competitive rate).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is OLIVE AI right for my business?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>That depends on one very important question: does your business utilize a phone in any way? If so, then OLIVE is a great fit for you! No matter what industry you're in, OLIVE can help you automate your business and elevate your customer service.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What kind of analytics does OLIVE provide?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Analytics are provided in the Data Analytics Dashboard and Business Intelligence Hub. The Data Analytics Dashboard provides a comprehensive view of your business's performance, including call volume, caller sentiment, and agent productivity. The Business Intelligence Hub, on the other hand, offers a more detailed analysis of your business's operations, including customer behavior, agent performance, and revenue trends, and offers solutions to improve your workflows with the end goal of increasing your bottom line.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How secure is my business data with OLIVE?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Your data is as secure as you would like it to be. We do not sell your data. However, if you would like to opt in to allowing us access to your data (for the sole purpose of training our models), we will compensate you with additional voice minutes absolutely free of charge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="footer-background"></div>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <h4 class="footer-title">OLIVE AI</h4>
+                    <p class="footer-description">
+                        Your business, automated.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M18.42,14.009L27.891,3h-2.244l-8.224,9.559L10.855,3H3.28l9.932,14.455L3.28,29h2.244l8.684-10.095,6.936,10.095h7.576l-10.301-14.991h0Zm-3.074,3.573l-1.006-1.439L6.333,4.69h3.447l6.462,9.243,1.006,1.439,8.4,12.015h-3.447l-6.854-9.804h0Z"></path></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M24.562,7.613c-1.508-.983-2.597-2.557-2.936-4.391-.073-.396-.114-.804-.114-1.221h-4.814l-.008,19.292c-.081,2.16-1.859,3.894-4.039,3.894-.677,0-1.315-.169-1.877-.465-1.288-.678-2.169-2.028-2.169-3.582,0-2.231,1.815-4.047,4.046-4.047,.417,0,.816,.069,1.194,.187v-4.914c-.391-.053-.904-.087-1.617-.087-4.886,0-8.86,3.975-8.86,8.86,0,2.998,1.498,5.65,3.783,7.254,1.439,1.01,3.19,1.606,5.078,1.606,4.886,0,8.86-3.975,8.86-8.86V11.357c1.888,1.355,4.201,2.154,6.697,2.154v-4.814c-1.345,0-2.597-.4-3.647-1.085Z"></path></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M18.05,16c0,5.018-4.041,9.087-9.025,9.087S0,21.018,0,16,4.041,6.913,9.025,6.913s9.025,4.069,9.025,9.087m9.901,0c0,4.724-2.02,8.555-4.513,8.555s-4.513-3.831-4.513-8.555,2.02-8.555,4.512-8.555,4.513,3.83,4.513,8.555m4.05,0c0,4.231-.71,7.664-1.587,7.664s-1.587-3.431-1.587-7.664,.71-7.664,1.587-7.664,1.587,3.431,1.587,7.664"></path></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M26.111,3H5.889c-1.595,0-2.889,1.293-2.889,2.889V26.111c0,1.595,1.293,2.889,2.889,2.889H26.111c1.595,0,2.889-1.293,2.889-2.889V5.889c0-1.595-1.293-2.889-2.889-2.889ZM10.861,25.389h-3.877V12.87h3.877v12.519Zm-1.957-14.158c-1.267,0-2.293-1.034-2.293-2.31s1.026-2.31,2.293-2.31,2.292,1.034,2.292,2.31-1.026,2.31-2.292,2.31Zm16.485,14.158h-3.858v-6.571c0-1.802-.685-2.809-2.111-2.809-1.551,0-2.362,1.048-2.362,2.809v6.571h-3.718V12.87h3.718v1.686s1.118-2.069,3.775-2.069,4.556,1.621,4.556,4.975v7.926Z" fill-rule="evenodd"></path></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16,2C8.268,2,2,8.268,2,16s6.268,14,14,14s14-6.268,14-14S23.732,2,16,2z M20.176,11.421h-2.009 c-0.238,0-0.5,0.31-0.5,0.734v1.449h2.509l-0.333,2.811h-2.176v7.136h-2.885v-7.136h-2.468v-2.811h2.468v-1.225 c0-2.395,1.096-3.682,3.589-3.682h1.805V11.421z"></path></svg>
+                        </a>
+                    </div>
+                    <div class="footer-copyright">
+                        &copy; 2025 THE TURING CENTER. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
-    <!--END FOOTER-->
 
     <script>
-        // Force scroll position to top immediately when page loads
-        if (history.scrollRestoration) {
-            history.scrollRestoration = 'manual';
-        }
-        window.scrollTo(0, 0);
-        
-        // Additional scroll fix 
-        window.addEventListener('beforeunload', function() {
-            window.scrollTo(0, 0);
-        });
-        
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
-
-        class TextScramble {
-            constructor(el) {
-                this.el = el;
-                // Only uppercase letters for scramble effect
-                this.chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                this.update = this.update.bind(this);
+        // Video carousel functionality
+        const videos = [
+            {
+                url: "https://www.youtube.com/embed/1WCOjiKI8vU",
+                description: "AS A VIRTUAL HOSTESS"
+            },
+            {
+                url: "https://www.youtube.com/embed/1WCOjiKI8vU", // Same URL for now
+                description: "AS A PIZZERIA EMPLOYEE"
+            },
+            {
+                url: "https://www.youtube.com/embed/1WCOjiKI8vU", // Same URL for now
+                description: "AS A DENTAL RECEPTIONIST"
             }
+        ];
+        
+        let currentVideoIndex = 0;
+        
+        function updateVideo() {
+            const videoFrame = document.getElementById('video-frame');
+            const videoDescription = document.getElementById('video-description');
             
-            setText(newText) {
-                const oldText = this.el.innerText;
-                const length = Math.max(oldText.length, newText.length);
-                const promise = new Promise((resolve) => this.resolve = resolve);
-                this.queue = [];
-                
-                for (let i = 0; i < length; i++) {
-                    const from = oldText[i] || '';
-                    const to = newText[i] || '';
-                    const start = Math.floor(Math.random() * 20); // Reduced from 40 to 20
-                    const end = start + Math.floor(Math.random() * 20); // Reduced from 40 to 20
-                    this.queue.push({ from, to, start, end });
-                }
-                
-                cancelAnimationFrame(this.frameRequest);
-                this.frame = 0;
-                this.update();
-                return promise;
-            }
+            // Update the iframe src
+            videoFrame.src = videos[currentVideoIndex].url;
             
-            update() {
-                let output = '';
-                let complete = 0;
-                
-                for (let i = 0, n = this.queue.length; i < n; i++) {
-                    let { from, to, start, end, char } = this.queue[i];
-                    
-                    if (this.frame >= end) {
-                        complete++;
-                        output += to;
-                    } else if (this.frame >= start) {
-                        if (!char || Math.random() < 0.5) { // Increased from 0.28 to 0.5 for faster changes
-                            char = this.randomChar();
-                            this.queue[i].char = char;
-                        }
-                        output += char;
-                    } else {
-                        output += from;
-                    }
-                }
-                
-                // Pad with spaces to maintain width
-                while (output.length < this.queue.length) {
-                    output += ' ';
-                }
-                
-                this.el.innerText = output;
-                
-                if (complete === this.queue.length) {
-                    this.resolve();
+            // Update the description
+            videoDescription.textContent = videos[currentVideoIndex].description;
+            
+            // Update the active dot
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                if (index === currentVideoIndex) {
+                    dot.classList.add('active');
                 } else {
-                    this.frameRequest = requestAnimationFrame(this.update);
-                    this.frame++;
-                }
-            }
-            
-            randomChar() {
-                return this.chars[Math.floor(Math.random() * this.chars.length)];
-            }
-        }
-
-        // Initialize scramblers for each nav link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            const scrambledText = link.querySelector('.scrambled-text');
-            const originalText = link.getAttribute('data-text');
-            const scrambler = new TextScramble(scrambledText);
-            
-            link.addEventListener('mouseenter', () => {
-                scrambler.setText(originalText);
-            });
-            
-            link.addEventListener('mouseleave', () => {
-                scrambler.setText('');
-            });
-        });
-
-        const phrases = [
-            "Together We Are",
-            "Advancing Technology",
-            "Transforming Industries",
-            "Empowering Innovation",
-            "Building The Future",
-            "Scroll Down To Learn More"
-        ];
-
-        const rotatingSlogan = document.querySelector('.slogan');
-        const fx = new TextScramble(rotatingSlogan);
-
-        let counter = 0;
-        const nextSlogan = () => {
-            fx.setText(phrases[counter]).then(() => {
-                // Check if it's the last phrase
-                const delay = counter === phrases.length - 1 ? 10000 : 2000; // 10 seconds for last phrase, 2 for others
-                setTimeout(() => {
-                    counter = (counter + 1) % phrases.length;
-                    nextSlogan();
-                }, delay);
-            });
-        };
-
-        nextSlogan();
-
-        function handleIntersection(entries, observer) {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = `${index * 0.1}s`;
-                    entry.target.style.animationPlayState = 'running';
-                    observer.unobserve(entry.target);
+                    dot.classList.remove('active');
                 }
             });
         }
-
-        const observer = new IntersectionObserver(handleIntersection, {
-            threshold: 0.1
-        });
-
-        // Will need to populate this once we have the language files
-        document.querySelectorAll('.language-tile').forEach(tile => {
-            observer.observe(tile);
-        });
-
-        // Update languages array with specific files in order
-        const languages = [
-            'english', 'spanish', 'chinese', 'french', 'german', 'italian', 'hindi',
-            'russian', 'japanese', 'korean', 'arabic', 'finnish', 'pashto'
-        ];
-
-        const grid = document.getElementById('languageGrid');
         
-        languages.forEach((lang, index) => {
-            const tile = document.createElement('div');
-            tile.className = 'language-tile';
-            
-            const img = document.createElement('img');
-            img.src = `static/languages/${lang}.svg`;
-            img.alt = `${lang.charAt(0).toUpperCase() + lang.slice(1)} language`;
-            
-            tile.appendChild(img);
-            grid.appendChild(tile);
-        });
-
-        const languageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = `${index * 0.05}s`;
-                    entry.target.style.animationPlayState = 'running';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.language-tile').forEach(tile => {
-            languageObserver.observe(tile);
-        });
-
-        // Add to your existing script
-        const emojis = [
-            'fast food', 'retail stores', 'health clinics',
-            'hotels', 'dental practices', 'gyms',
-            'banks', 'veterinary clinics', 'stadiums',
-            'call centers', 'auto shops', 'bowling alleys',
-            'gas stations', 'arcades', 'pop-up shops',
-            'resorts', 'schools', 'churches'
-        ];
-
-        const emojiGrid = document.querySelector('.emoji-grid');
+        function nextVideo() {
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            updateVideo();
+        }
         
-        emojis.forEach(emoji => {
-            const tile = document.createElement('div');
-            tile.className = 'emoji-tile';
-            
-            const img = document.createElement('img');
-            img.src = `static/emojis/${emoji}.svg`;
-            img.alt = emoji;
-            
-            const name = document.createElement('div');
-            name.className = 'emoji-name';
-            name.textContent = emoji;
-            
-            tile.appendChild(img);
-            tile.appendChild(name);
-            emojiGrid.appendChild(tile);
-        });
+        function prevVideo() {
+            currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+            updateVideo();
+        }
 
-        // Update the second emoji grid script to use the correct selector
-        const secondEmojis = [
-            'e-commerce support', 'influencer inquiries', 'agents & managers',
-            'personal trainers', 'photographers', 'personal assistants',
-            'barbers', 'babysitters', 'tradesmen',
-            'traveling nurses', 'event planners', 'music teachers',
-            'tutors', 'florists', 'jewelers',
-            'gardeners', 'lead generators', 'accessibility needs'
-        ];
-
-        const secondEmojiGrid = document.getElementById('secondEmojiGrid');
-        
-        secondEmojis.forEach(emoji => {
-            const tile = document.createElement('div');
-            tile.className = 'emoji-tile';
-            
-            const img = document.createElement('img');
-            img.src = `static/emojis/${emoji}.svg`;
-            img.alt = emoji;
-            
-            const name = document.createElement('div');
-            name.className = 'emoji-name';
-            name.textContent = emoji;
-            
-            tile.appendChild(img);
-            tile.appendChild(name);
-            secondEmojiGrid.appendChild(tile);
-        });
-
-        // Add to your existing script
+        // Dynamic ticker population
         document.addEventListener('DOMContentLoaded', function() {
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    // Close all other questions
-                    faqQuestions.forEach(item => {
-                        if (item !== question) {
-                            item.classList.remove('active');
-                            item.nextElementSibling.style.display = 'none';
-                        }
+            // Function to create ticker items
+            function createTickerItems(containerId, basePath, itemList, duplicateFactor = 3) {
+                const container = document.getElementById(containerId);
+                
+                // Create and append items, repeated for smooth scrolling
+                for (let dup = 0; dup < duplicateFactor; dup++) {
+                    itemList.forEach(item => {
+                        const img = document.createElement('img');
+                        img.src = `${basePath}/${item}.svg`;
+                        img.alt = item;
+                        img.className = 'ticker-item';
+                        container.appendChild(img);
                     });
-                    
-                    // Toggle current question
-                    question.classList.toggle('active');
-                    const answer = question.nextElementSibling;
-                    
-                    if (question.classList.contains('active')) {
-                        answer.style.display = 'block';
-                    } else {
-                        answer.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Add IDs to the sections for smooth scrolling
-        document.querySelector('.olive-section').id = 'olive';
-        document.querySelector('.intellintent-section').id = 'intellintent';
-        
-        // Update navbar links with the correct href values
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            const text = link.querySelector('.original-text').textContent.trim().toLowerCase();
-            if (text === 'olive ai') {
-                link.setAttribute('href', '#olive');
-            } else if (text === 'intellintent') {
-                link.setAttribute('href', '#intellintent');
-            } else if (text === 'contact') {
-                link.setAttribute('href', '#contact');
+                }
             }
-        });
-        
-        // Implement smooth scrolling
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Offset for the navbar
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
-        
-        // Tab functionality for contact forms
-        document.querySelectorAll('.contact-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs
-                document.querySelectorAll('.contact-tab').forEach(t => {
-                    t.classList.remove('active');
-                });
-                
-                // Add active class to clicked tab
-                this.classList.add('active');
-                
-                // Hide all forms
-                document.querySelectorAll('.contact-form').forEach(form => {
-                    form.classList.remove('active');
-                });
-                
-                // Show the corresponding form
-                const tabType = this.getAttribute('data-tab');
-                document.getElementById(`${tabType}-form`).classList.add('active');
-            });
-        });
-
-        // Implement smooth scrolling for all elements that should navigate to the contact section
-        function setupSmoothScrolling() {
-            // For the button in the language section
-            document.querySelector('.glass-button').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('contact').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
             
-            // For the contact link in the footer
-            document.querySelector('.footer-link:nth-child(1)').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('contact').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-        }
-        
-        // Fix scrollbar jumping on refresh
-        window.onload = function() {
-            // If page was loaded with a hash in the URL, and we're not intentionally navigating there
-            if (window.location.hash && !window.location.hash.includes('#contact') && 
-                !window.location.hash.includes('#olive') && !window.location.hash.includes('#intellintent')) {
-                // Reset to top of page
-                window.scrollTo(0, 0);
-            }
-        };
-        
-        // Section fade-in animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            // Reset scroll position to top immediately
-            setTimeout(function() {
-                window.scrollTo(0, 0);
-                document.documentElement.scrollTop = 0;
-                document.body.scrollTop = 0;
-            }, 0);
-            
-            const sections = [
-                '.olive-section', 
-                '.olive-section2', 
-                '.language-section',
-                '.applicable-section',
-                '.applicable-section-reverse',
-                '.slanted-container',
-                '.package-section',
-                '.split-screen-section',
-                '.contact-section',
-                '.faq-section',
-                '.intellintent-section'
+            // Sample of common languages (you can expand this list or load from a JSON file)
+            const sampleLanguages = [
+                'arabic', 'bengali', 'chinese', 'danish', 'english', 'french', 
+                'german', 'hindi', 'italian', 'japanese', 'korean', 'portuguese', 
+                'russian', 'spanish', 'sanskrit', 'uzbek', 'urdu', 'vietnamese'
+                // In practice, your server would generate the complete list
             ];
             
-            // Add the fade-in-section class to all sections
-            sections.forEach(selector => {
-                const elements = document.querySelectorAll(selector);
-                elements.forEach(el => {
-                    el.classList.add('fade-in-section');
+            // Sample of country codes (you can expand this list or load from a JSON file)
+            const sampleCountryCodes = [
+                'us', 'gb', 'ca', 'au', 'fr', 'de', 'it', 'es', 'jp', 'cn', 
+                'br', 'ru', 'in', 'mx', 'za', 'ar', 'ch', 'se', 'no', 'nl'
+                // In practice, your server would generate the complete list
+            ];
+            
+            // Populate tickers
+            createTickerItems('languages-ticker', 'static/languages', sampleLanguages);
+            createTickerItems('flags-ticker', 'static/1x1', sampleCountryCodes);
+        });
+
+        // FAQ Accordion
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-question');
+            
+            faqItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const parent = item.parentNode;
+                    parent.classList.toggle('active');
+                    
+                    // Update the plus/minus icon
+                    const icon = item.querySelector('.faq-icon');
+                    icon.textContent = parent.classList.contains('active') ? '–' : '+';
+                });
+            });
+        });
+
+        // Hamburger menu functionality
+        function toggleMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+    </script>
+
+    <!-- Add this script before the closing body tag -->
+    <script>
+        // Hamburger menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+            
+            // Close mobile menu when clicking a link
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
                 });
             });
             
-            // Create the observer for sections
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        // Once the animation is triggered, unobserve the target
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
+            // Smooth scrolling for all navigation links
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-link');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href').startsWith('#')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 70, // Offset for the navbar height
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                }
             });
-            
-            // Observe all sections
-            document.querySelectorAll('.fade-in-section').forEach(section => {
-                observer.observe(section);
-            });
-            
-            // Create a separate observer for packages
-            const packageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        packageObserver.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: "0px 0px -100px 0px"
-            });
-            
-            // Observe all packages
-            document.querySelectorAll('.package').forEach(pkg => {
-                packageObserver.observe(pkg);
-            });
-            
-            // Existing DOM loaded code...
         });
     </script>
 </body>
