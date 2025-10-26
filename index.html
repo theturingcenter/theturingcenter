@@ -1,1973 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="static/icons/Favicon Transparent.ico" type="image/x-icon">
-    <!--START MONTSERRAT FONT STYLE-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <!--END MONTSERRAT FONT STYLE-->
-
-    <!--START TANGERINE FONT STYLE-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
-    <!--END TANGERINE FONT STYLE-->
-
-    <!--START GREAT VIBES FONT STYLE-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <!--END GREAT VIBES FONT STYLE-->
-    <title>The Turing Center | Saving time and money with AI voice assistants</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        body {
-            background-color: #f8f9fa;
-            color: #212529;
-        }
-
-        /* Animation Styles */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Navbar Styles */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 5%;
-            background-color: #ffffff;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            height: 40px;
-            margin-right: 0.75rem;
-        }
-
-        .brand-name {
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            color: #333;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #785dc8;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            width: 30px;
-            height: 25px;
-            justify-content: space-between;
-            position: relative;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 100%;
-            height: 3px;
-            background-color: #333;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            z-index: 1000;
-            transform: translateY(-100%);
-            transition: transform 0.4s ease;
-        }
-
-        .mobile-link {
-            color: #333;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-        }
-
-        .cta-mobile {
-            color: #785dc8;
-        }
-
-        /* Responsive Navbar */
-        @media (max-width: 768px) {
-            .nav-links, .nav-right {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .mobile-menu.active {
-                transform: translateY(0);
-                display: flex;
-            }
-
-            /* Hamburger animation */
-            .hamburger.active span:first-child {
-                transform: translateY(11px) rotate(45deg);
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:last-child {
-                transform: translateY(-11px) rotate(-45deg);
-            }
-        }
-        
-        /* Center footer content */
-        .footer-section {
-            background-color: #111111;
-            color: #fff;
-            padding: 5rem 1rem 2rem;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .footer-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-repeat: repeat;
-            background-size: 48px 48px;
-            opacity: 0.15;
-            z-index: 0;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .footer-top {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 4rem;
-            text-align: center;
-        }
-
-        .footer-col {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .footer-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-            color: #ffffff;
-        }
-
-        .footer-description {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .social-icons {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background-color: #785dc8;
-            transform: translateY(-3px);
-        }
-
-        .social-icon svg {
-            width: 18px;
-            height: 18px;
-            fill: white;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #fff;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            width: 100%;
-            text-align: center;
-        }
-
-        .footer-legal {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .footer-legal a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-legal a:hover {
-            color: #fff;
-        }
-
-        .footer-copyright {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .footer-top {
-                flex-direction: column;
-                gap: 3rem;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-legal {
-                justify-content: center;
-                margin-bottom: 1rem;
-            }
-        }
-
-        /* Main Section Styles */
-        .main-container {
-            display: flex;
-            min-height: calc(100vh - 85px);
-            padding: 3rem 5%;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        /* Second container (optional alternating style) */
-        .main-container:nth-of-type(2) {
-            background-color: #f8f9fa; /* Slight background variation */
-        }
-
-        .left-section {
-            flex: 1;
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards;
-            animation-delay: 0.3s;
-        }
-
-        .right-section {
-            flex: 1;
-            position: relative;
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards;
-            animation-delay: 0.6s;
-        }
-
-        .main-heading {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-
-        .voice-main-heading {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-
-        .main-paragraph {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #495057;
-            margin-bottom: 1.5rem;
-        }
-
-        .gallery-container {
-            position: relative;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: transparent;
-        }
-
-        .gallery-image {
-            width: 50%;
-            border-radius: 12px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .main-container {
-                flex-direction: column;
-                padding: 2rem 5%;
-                position: relative; /* Add for positioning context */
-            }
-
-            .main-heading {
-                font-size: 2.8rem;
-            }
-
-            .voice-main-heading {
-                font-size: 2.8rem;
-            }
-
-            .left-section, .right-section {
-                width: 100%;
-            }
-            
-            /* Mobile-specific gallery positioning */
-            .right-section {
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 50%; /* Half width */
-                height: 100%;
-                z-index: 0; /* Behind content */
-            }
-            
-            .gallery-container {
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: flex-end; /* Right align */
-            }
-            
-            .gallery-image {
-                opacity: 0.2; /* Reduced opacity */
-                width: 90%; /* Slightly smaller */
-                margin-right: 5%;
-            }
-            
-            .left-section {
-                position: relative;
-                z-index: 1; /* Above image */
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .navbar {
-                padding: 1rem 5%;
-            }
-
-            .brand-name {
-                font-size: 1rem;
-            }
-
-            .login-text {
-                font-size: 0.8rem;
-            }
-
-            .cta-button {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.8rem;
-            }
-
-            .main-heading {
-                font-size: 2.2rem;
-            }
-
-            .voice-main-heading {
-                font-size: 2.2rem;
-            }
-
-            .main-paragraph {
-                font-size: 1rem;
-            }
-
-            .video-heading {
-                font-size: 2.2rem;
-            }
-        }
-
-        /* List styles */
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .feature-list li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: flex-start;
-            line-height: 1.7;
-            font-size: 1.1rem;
-            color: #495057;
-        }
-
-        .main-check-icon {
-            margin-right: 0.75rem;
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            margin-top: 0.35rem;
-        }
-
-        /* Video Section Styles */
-        .video-section {
-            background-color: #000;
-            padding: 5rem 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .video-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .video-heading {
-            color: white;
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            text-align: center;
-            letter-spacing: 1px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .video-player-container {
-            width: 100%;
-            max-width: 760px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .video-nav-button {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            position: absolute;
-            z-index: 10;
-        }
-
-        .prev-button {
-            left: -25px;
-        }
-
-        .next-button {
-            right: -25px;
-        }
-
-        .video-nav-button:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .youtube-player {
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-        }
-
-        .youtube-player iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .video-subheading {
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 1rem;
-            text-align: center;
-            letter-spacing: 2px;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-        }
-
-        .video-dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 1rem;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: white;
-            opacity: 0.5;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            opacity: 1;
-            background-color: #785dc8;
-            transform: scale(1.2);
-        }
-
-        /* Responsive adjustments for video section */
-        @media (max-width: 768px) {
-            .video-heading {
-                font-size: 2.8rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .video-nav-button {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
-            .prev-button {
-                left: 10px;
-            }
-            
-            .next-button {
-                right: 10px;
-            }
-        }
-
-        /* Bento Box Section Styles */
-        .bento-section {
-            background-color: #000;
-            padding: 5rem 1rem;
-        }
-
-        .bento-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .bento-cell {
-            background-color: #f8f9fa;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .bento-image {
-            max-width: 80%;
-            height: auto;
-            margin-top: 1.5rem;
-            display: block;
-        }
-
-        .bento-cell:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .cell-title {
-            margin-top: auto;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        /* Cell specific styles */
-        .cell-1 {
-            grid-column: span 1;
-        }
-
-        /* Responsive adjustments for bento box */
-        @media (max-width: 768px) {
-            .bento-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .bento-cell {
-                grid-column: span 1 !important;
-            }
-        }
-
-        /* Language Section Styles */
-        .language-section {
-            background-color: #f8f9fa;
-            padding: 5rem 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .language-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48'%3E%3Cg opacity='0.25'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 47L24 48L23 48L23 47L24 47ZM24 43L24 44L23 44L23 43L24 43ZM24 39L24 40L23 40L23 39L24 39ZM24 35L24 36L23 36L23 35L24 35ZM24 31L24 32L23 32L23 31L24 31ZM24 27L24 28L23 28L23 27L24 27ZM24 23L24 24L23 24L23 23L24 23ZM24 19L24 20L23 20L23 19L24 19ZM24 15L24 16L23 16L23 15L24 15ZM24 11L24 12L23 12L23 11L24 11ZM24 7L24 8L23 8L23 7L24 7ZM24 3L24 4L23 4L23 3L24 3Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48 47L48 48L47 48L47 47L48 47ZM48 43L48 44L47 44L47 43L48 43ZM48 39L48 40L47 40L47 39L48 39ZM48 35L48 36L47 36L47 35L48 35ZM48 31L48 32L47 32L47 31L48 31ZM48 27L48 28L47 28L47 27L48 27ZM48 23L48 24L47 24L47 23L48 23ZM48 19L48 20L47 20L47 19L48 19ZM48 15L48 16L47 16L47 15L48 15ZM48 11L48 12L47 12L47 11L48 11ZM48 7L48 8L47 8L47 7L48 7ZM48 3L48 4L47 4L47 3L48 3Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3Cg opacity='0.25'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48 43L48 44L47 44L47 43L48 43ZM48 39L48 40L47 40L47 39L48 39ZM48 35L48 36L47 36L47 35L48 35ZM48 31L48 32L47 32L47 31L48 31ZM48 27L48 28L47 28L47 27L48 27ZM48 23L48 24L47 24L47 23L48 23ZM48 19L48 20L47 20L47 19L48 19ZM48 15L48 16L47 16L47 15L48 15ZM48 11L48 12L47 12L47 11L48 11ZM48 7L48 8L47 8L47 7L48 7ZM48 3L48 4L47 4L47 3L48 3Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M47 47L48 47L48 48L47 48L47 47ZM43 47L44 47L44 48L43 48L43 47ZM39 47L40 47L40 48L39 48L39 47ZM35 47L36 47L36 48L35 48L35 47ZM31 47L32 47L32 48L31 48L31 47ZM27 47L28 47L28 48L27 48L27 47ZM23 47L24 47L24 48L23 48L23 47ZM19 47L20 47L20 48L19 48L19 47ZM15 47L16 47L16 48L15 48L15 47ZM11 47L12 47L12 48L11 48L11 47ZM7 47L8 47L8 48L7 48L7 47ZM3 47L4 47L4 48L3 48L3 47Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3Cg opacity='0.1'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M-0.64647 24.3536L24.3535 -0.646439L23.6464 -1.35355L-1.35358 23.6465L-0.64647 24.3536ZM-0.64647 36.3536L36.3535 -0.646439L35.6464 -1.35355L-1.35358 35.6464L-0.64647 36.3536ZM48.3535 -0.646439L-0.64647 48.3536L-1.35358 47.6465L47.6464 -1.35355L48.3535 -0.646439ZM10.3535 49.3536L49.3535 10.3536L48.6464 9.64645L9.64642 48.6464L10.3535 49.3536ZM49.3535 22.3535L22.3535 49.3535L21.6464 48.6464L48.6464 21.6464L49.3535 22.3535ZM34.3535 49.3536L49.3535 34.3536L48.6464 33.6465L33.6464 48.6464L34.3535 49.3536ZM49.3535 46.3536L46.3535 49.3536L45.6464 48.6465L48.6464 45.6465L49.3535 46.3536ZM-0.64647 12.3536L12.3535 -0.646439L11.6464 -1.35355L-1.35358 11.6465L-0.64647 12.3536Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3Cg opacity='0.1'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M-0.64647 24.3536L24.3535 -0.646439L23.6464 -1.35355L-1.35358 23.6465L-0.64647 24.3536ZM-0.64647 48.3536L48.3535 -0.646439L47.6464 -1.35355L-1.35358 47.6465L-0.64647 48.3536ZM49.3535 22.3535L22.3535 49.3535L21.6464 48.6464L48.6464 21.6464L49.3535 22.3535ZM46.3535 49.3536L49.3535 46.3536L48.6464 45.6465L45.6464 48.6465L46.3535 49.3536Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3Cg opacity='0.25'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 19H23V23H19V24H23V28H24V24H28V23H24V19Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 19H-1V23H-5V24H-1V28H0V24H4V23H0V19Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 43H23V47H19V48H23V52H24V48H28V47H24V43Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 43H-1V47H-5V48H-1V52H0V48H4V47H0V43Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 -5H23V-1H19V0H23V4H24V0H28V-1H24V-5Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48 19H47V23H43V24H47V28H48V24H52V23H48V19Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48 43H47V47H43V48H47V52H48V48H52V47H48V43Z' fill='currentColor'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48 -5H47V-1H43V0H47V4H48V0H52V-1H48V-5Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 48px 48px;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.8;
-        }
-
-        .language-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 1200px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-
-        .language-section .main-heading {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        /* Ticker Styles */
-        .ticker-container {
-            width: 100%;
-            overflow: hidden;
-            margin: 1.5rem 0;
-        }
-
-        .ticker-content {
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-        }
-
-        .ticker-rtl {
-            animation: ticker-rtl 60s linear infinite;
-        }
-
-        .ticker-ltr {
-            animation: ticker-ltr 60s linear infinite;
-        }
-
-        .ticker-item {
-            height: 40px;
-            width: auto;
-            margin: 0 1.5rem;
-        }
-
-        @keyframes ticker-rtl {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-3000px); } /* Adjust based on total width */
-        }
-
-        @keyframes ticker-ltr {
-            0% { transform: translateX(-3000px); } /* Adjust based on total width */
-            100% { transform: translateX(0); }
-        }
-
-        /* Divider Line */
-        .ticker-divider {
-            width: 80%;
-            height: 3px;
-            background-color: #785dc8;
-            border: none;
-            margin: 2rem 0;
-        }
-
-        /* Language Subheading */
-        .language-subheading {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            font-size: 1.4rem;
-            font-weight: 700;
-            text-align: center;
-            margin-top: 2.5rem;
-            color: #212529;
-            letter-spacing: 1px;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .ticker-item {
-                height: 30px;
-                margin: 0 1rem;
-            }
-            
-            .language-subheading {
-                font-size: 1.1rem;
-                padding: 0 1rem;
-            }
-            
-            .ticker-divider {
-                width: 90%;
-            }
-        }
-
-        /* Pricing Section Styles */
-        .pricing-section {
-            background-color: #ffffff;
-            padding: 5rem 1rem;
-        }
-
-        .pricing-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .pricing-cards {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 3rem 0;
-            width: 100%;
-            flex-wrap: wrap;
-        }
-
-        .pricing-card {
-            background-color: #fff;
-            border-radius: 1rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            width: calc(33.33% - 2rem);
-            min-width: 250px;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .best-value {
-            border: 2px solid #785dc8;
-            padding: 1.85rem;
-        }
-
-        .best-value-tag {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #785dc8;
-            color: white;
-            padding: 0.3rem 1.5rem;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        .plan-name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .plan-price {
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .price-period {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #6c757d;
-        }
-
-        .plan-features {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-
-        .plan-features li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-
-        .check-icon {
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-
-        .plan-button {
-            background-color: #785dc8;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            text-align: center;
-            margin-top: auto;
-            text-decoration: none;
-        }
-
-        .plan-button:hover {
-            background-color: #6a4db8;
-        }
-
-        /* Pricing note style */
-        .pricing-note {
-            text-align: center;
-            margin: 1rem 0;
-            font-size: 1rem;
-            color: #495057;
-            font-weight: 500;
-        }
-
-        /* Comparison Table Styles */
-        .comparison-section {
-            width: 100%;
-            margin-top: 5rem;
-        }
-
-        .comparison-heading {
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 2.5rem;
-        }
-
-        .comparison-table {
-            overflow-x: auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 1rem;
-        }
-
-        .comparison-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .comparison-table th, 
-        .comparison-table td {
-            padding: 1.2rem 1.5rem;
-            text-align: center;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .comparison-table th {
-            background-color: #f8f9fa;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .comparison-table th:first-child,
-        .comparison-table td:first-child {
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .comparison-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comparison-table tbody tr:hover {
-            background-color: rgba(120, 93, 200, 0.05);
-        }
-        
-        /* Beta tag style */
-        .beta-tag {
-            background-color: #FABC2A;
-            color: #E0777D;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.15rem 0.4rem;
-            border-radius: 0.3rem;
-            margin-left: 0.5rem;
-            display: inline-block;
-            vertical-align: middle;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Alpha tag style */
-        .alpha-tag {
-            background-color: #ABD2FA;
-            color: #294D4A;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.15rem 0.4rem;
-            border-radius: 0.3rem;
-            margin-left: 0.5rem;
-            display: inline-block;
-            vertical-align: middle;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 992px) {
-            .pricing-card {
-                width: calc(50% - 2rem);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .pricing-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .pricing-card {
-                width: 100%;
-                max-width: 400px;
-                margin-bottom: 3rem;
-            }
-            
-            .comparison-table th, 
-            .comparison-table td {
-                padding: 1rem 0.75rem;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* FAQ Section Styles */
-        .faq-section {
-            background-color: #f8f9fa;
-            padding: 5rem 1rem;
-        }
-
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-list {
-            margin-top: 3rem;
-        }
-
-        .faq-item {
-            background-color: #fff;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background-color: rgba(120, 93, 200, 0.05);
-        }
-
-        .faq-question h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .faq-icon {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: #785dc8;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding: 0 1.5rem;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 300px;
-            padding: 0 1.5rem 1.5rem;
-        }
-
-        .faq-answer p {
-            margin-top: 0;
-            line-height: 1.6;
-            color: #6c757d;
-        }
-
-        /* Voice-Only Pricing Section Styles */
-
-        .voice-pricing-contact {
-            color: #785dc8;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s ease;
-        }
-
-        .voice-pricing-contact:hover {
-            color: #6a4db8;
-        }
-
-        .voice-pricing-section {
-            background-color: #ffffff;
-            padding: 5rem 1rem;
-        }
-
-        .voice-pricing-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .voice-pricing-cards {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 3rem 0;
-            width: 100%;
-            flex-wrap: wrap;
-        }
-
-        .voice-pricing-card {
-            background-color: #fff;
-            border-radius: 1rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            width: calc(33.33% - 2rem);
-            min-width: 250px;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-        
-        /* Make sure the width on mobile matches */
-        @media (max-width: 768px) {
-            .voice-pricing-card {
-                width: 100%;
-                max-width: 400px;
-                min-width: 300px; /* Add minimum width to prevent being too skinny */
-                margin-bottom: 3rem;
-            }
-        }
-
-        .voice-pricing-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .voice-best-value {
-            border: 2px solid #785dc8;
-            padding: 1.85rem;
-        }
-
-        .voice-best-value-tag {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #785dc8;
-            color: white;
-            padding: 0.3rem 1.5rem;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        .voice-plan-name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .voice-plan-price {
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .voice-price-period {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #6c757d;
-        }
-
-        .voice-plan-features {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-
-        .voice-plan-features li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-
-        .voice-check-icon {
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-
-        .voice-plan-button {
-            background-color: #785dc8;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            text-align: center;
-            margin-top: auto;
-            text-decoration: none;
-        }
-
-        .voice-plan-button:hover {
-            background-color: #6a4db8;
-        }
-
-        /* Voice-Only Pricing note style */
-        .voice-pricing-note {
-            text-align: center;
-            margin: 1rem 0;
-            font-size: 1rem;
-            color: #495057;
-            font-weight: 500;
-        }
-
-        /* Responsive adjustments for voice pricing */
-        @media (max-width: 992px) {
-            .voice-pricing-card {
-                width: calc(50% - 2rem);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .voice-pricing-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .voice-pricing-card {
-                width: 100%;
-                max-width: 400px;
-                margin-bottom: 3rem;
-            }
-            
-            .voice-main-heading {
-                font-size: 2.8rem;
-            }
-
-            th {
-                font-size: 0.5rem;
-            }
-        }
-
-        /* Restore button styles for CTA button */
-        .cta-button {
-            background-color: #785dc8;
-            color: white;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 0.3rem;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .cta-button:hover {
-            background-color: #6a4db8;
-        }
-        
-        /* Restore logo spinning animation */
-        .logo {
-            height: 40px;
-            margin-right: 0.75rem;
-            animation: logoSpin 10s linear infinite;
-        }
-        
-        @keyframes logoSpin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        
-        /* Make table headers smaller */
-        .comparison-table th {
-            font-size: 0.9rem;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            border-bottom: 2px solid #e9ecef;
-            text-align: left;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Turing Center</title>
+  
+  <!-- Optional favicon -->
+  <link rel="shortcut icon" href="static/icons/favicon.ico" type="image/x-icon" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --page-bg: #ffffff;
+      --text: #000000;
+      --muted: #404040;
+      --accent: #000000;
+      --border: #000000;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      overflow-x: hidden; /* allow vertical scroll */
+    }
+    /* Content container centered */
+    .content {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 200px 48px 200px; /* even more top/bottom space */
+    }
+    .stack {
+      width: min(1100px, 92vw);
+      display: grid;
+      gap: 28px;
+    }
+    .brand {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center; /* centers text vertically relative to logo */
+      gap: 24px;
+    }
+    .logo {
+      width: clamp(84px, 12vw, 140px);
+      height: clamp(84px, 12vw, 140px);
+      animation: spin 10s linear infinite;
+      filter: drop-shadow(0 0 12px rgba(0,0,0,0.08));
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .brand-text {
+      display: grid;
+      justify-items: start; /* text block alignment relative to logo */
+      gap: 10px;
+    }
+    .title {
+      margin: 0;
+      font-weight: 900; /* extra bold */
+      font-size: clamp(28px, 5vw, 56px);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    /* Mid title: same as .title but 25% smaller */
+    .mid-title {
+      margin: 0;
+      font-weight: 900;
+      font-size: clamp(21px, 3.75vw, 42px);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .underline {
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      border: none;
+      margin: 0;
+      opacity: 0.95;
+    }
+    .subtitle {
+      margin: 0;
+      font-weight: 700; /* bold */
+      font-size: clamp(14px, 2.2vw, 20px);
+      color: var(--text);
+      opacity: 0.95;
+    }
+    /* Waitlist form grid */
+    .waitlist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 16px;
+      align-items: center;
+    }
+    /* Make email input the longest of the four by giving it a larger base width */
+    .waitlist-row {
+      display: contents;
+    }
+    .field {
+      width: 100%;
+      appearance: none;
+      border: none; /* remove borders */
+      background: rgba(0,0,0,0.06); /* low-key fill */
+      color: var(--text);
+      border-radius: 10px;
+      padding: 14px 16px;
+      outline: none;
+      transition: box-shadow 0.2s ease, background-color 0.2s ease, transform 0.06s ease;
+      font-weight: 600;
+      box-shadow: inset 0 1px 0 rgba(0,0,0,0.08), inset 0 -8px 24px rgba(255,255,255,0.35);
+      backdrop-filter: blur(2px);
+      border-bottom: 2px solid rgba(0,0,0,0.5); /* underline */
+    }
+    .field::placeholder { color: var(--muted); opacity: 0.85; }
+    .field:hover { background: rgba(0,0,0,0.08); border-bottom-color: rgba(0,0,0,0.7); }
+    .field:focus { box-shadow: 0 0 0 6px rgba(0,0,0,0.10), inset 0 1px 0 rgba(0,0,0,0.08), inset 0 -8px 24px rgba(255,255,255,0.35); border-bottom-color: #000000; }
+    .submit {
+      cursor: pointer;
+      border: none;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      border-radius: 10px;
+      padding: 14px 18px;
+      text-transform: none;
+      transition: transform 0.12s ease, box-shadow 0.25s ease, background-color 0.2s ease;
+      width: 100%; /* match column width */
+      animation: bounce 1.5s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-4px); }
+      60% { transform: translateY(-2px); }
+    }
+    .submit:hover { background: rgba(0,0,0,0.88); box-shadow: none; }
+    .submit:active { background: rgba(0,0,0,0.82); box-shadow: none; }
+    /* Responsive: stack form on small screens */
+    @media (max-width: 720px) {
+      .content { padding: 160px 16px 160px; }
+      .stack { width: 84vw; gap: 16px; }
+      .brand { gap: 12px; }
+      .logo { width: clamp(52px, 16vw, 84px); height: clamp(52px, 16vw, 84px); }
+      .title { font-size: clamp(18px, 6vw, 28px); letter-spacing: 0.08em; }
+      .subtitle { font-size: clamp(12px, 3.4vw, 14px); }
+      .underline { height: 1px; }
+      .waitlist { grid-template-columns: 1fr; gap: 10px; }
+      .field { padding: 10px 12px; border-bottom-width: 1.5px; }
+      .submit { padding: 12px 14px; font-size: 0.95rem; }
+    }
+    @media (max-width: 420px) {
+      .content { padding: 140px 12px 140px; }
+      .stack { width: 82vw; gap: 12px; }
+      .brand { gap: 10px; }
+      .logo { width: clamp(46px, 15vw, 72px); height: clamp(46px, 15vw, 72px); }
+      .title { font-size: clamp(16px, 6.4vw, 24px); letter-spacing: 0.06em; }
+      .subtitle { font-size: clamp(11px, 3.2vw, 13px); }
+      .field { padding: 9px 10px; border-bottom-width: 1px; }
+      .submit { padding: 11px 12px; font-size: 0.9rem; }
+    }
+
+    /* Lorem Ipsum Section */
+    .lorem-section {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+      padding: 60px 0 0 0;
+    }
+    .lorem-text {
+      margin: 0 0 30px 0;
+      color: var(--text);
+      font-weight: 400;
+      line-height: 1.6;
+      text-align: left;
+      opacity: 0.8;
+    }
+    .lorem-text:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Footer */
+    .footer {
+      background: rgba(0,0,0,0.04);
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+      margin-top: 0;
+    }
+    .footer-content {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-email {
+      margin: 0;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .footer-email a {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    .footer-email a:hover {
+      opacity: 0.7;
+    }
+    .social-icons {
+      display: flex;
+      gap: 16px;
+    }
+    .social-link {
+      color: var(--text);
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+    .social-link:hover {
+      opacity: 1;
+    }
+    
+    @media (max-width: 720px) {
+      .lorem-section { width: 84vw; padding: 40px 0 0 0; }
+      .footer { padding: 16px 0; }
+      .footer-content { flex-direction: column; text-align: center; gap: 16px; }
+      .footer-email { font-size: 14px; }
+    }
+    @media (max-width: 420px) {
+      .lorem-section { width: 86vw; padding: 30px 0 0 0; }
+      .footer { padding: 12px 0; }
+      .footer-content { gap: 12px; }
+      .footer-email { font-size: 13px; }
+      .social-icons { gap: 12px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="static/logos/black logo.svg" alt="The Turing Center Logo" class="logo">
-            <div class="brand-name">THE TURING CENTER</div>
+  <main class="content">
+    <section class="stack" aria-label="Hero">
+      <div class="brand">
+        <img class="logo" src="static/black logo.svg" alt="The Turing Center logo" />
+        <div class="brand-text">
+          <h1 class="title">THE TURING CENTER</h1>
+          <hr class="underline" />
+          <p class="subtitle">One platform. One agent. Every business function.</p>
         </div>
-        <div class="nav-links">
-            <a href="#pricing-section" class="nav-link">PRICING</a>
-            <a href="#faq-section" class="nav-link">FAQ</a>
+      </div>
+      <form class="waitlist" aria-label="Join waitlist" onsubmit="event.preventDefault();">
+        <div class="waitlist-row">
+          <input class="field email" type="email" name="email" placeholder="Email address" required />
+          <input class="field business" type="text" name="business" placeholder="Type of business" />
         </div>
-        <div class="nav-right">
-            <a href="contact.html" class="cta-button">BOOK A DEMO</a>
+        <div class="waitlist-row">
+          <input class="field fullname" type="text" name="fullname" placeholder="Full name" />
+          <button class="submit" type="submit">Join Waitlist</button>
         </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-menu">
-            <a href="#pricing-section" class="mobile-link">PRICING</a>
-            <a href="#faq-section" class="mobile-link">FAQ</a>
-            <a href="contact.html" class="mobile-link cta-mobile">BOOK A DEMO</a>
-        </div>
-    </nav>
-
-    <!-- Main Section -->
-    <main class="main-container">
-        <section class="left-section">
-            <h1 class="main-heading">MEET OLIVE</h1>
-            <p class="main-paragraph">The Optimized Linguistic Interactive Voice Engine that acts 24/7 as your business's AI assistant to:</p>
-            <ul class="feature-list">
-                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Never miss a call</li>
-                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Automate workflows</li>
-                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Eliminate stress</li>
-                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Capture leads</li>
-                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Save you money</li>
-            </ul>
-        </section>
-        <section class="right-section">
-            <div class="gallery-container">
-                <img src="static/avatars/olive.png" alt="Olive" class="gallery-image">
-            </div>
-        </section>
-    </main>
-
-    <!-- Second Main Section (Flipped) -->
-    <main class="main-container">
-        <section class="right-section">
-            <div class="gallery-container">
-                <img src="static/avatars/april.png" alt="April" class="gallery-image">
-            </div>
-        </section>
-        <section class="left-section">
-            <h1 class="main-heading">100% YOURS</h1>
-            <p class="main-paragraph">OLIVE is fully customizable to your business's needs, and we can help configure it however you wish.</p>
-            <ul class="feature-list">
-                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Manual or assisted setup</li>
-                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Hundreds of voices and personalities</li>
-                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Uploadable knowledge bases</li>
-                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Personable and professional</li>
-                <li><img src="static/emojis/check.svg" alt="Included" class="main-check-icon">Says what you want, when you want</li>
-            </ul>
-        </section>
-    </main>
-
-    <!-- Video Section -->
-    <section class="video-section">
-        <div class="video-container">
-            <h1 class="video-heading">WATCH OLIVE WORK</h1>
-            <div class="video-player-container">
-                <button class="video-nav-button prev-button" onclick="prevVideo()">❮</button>
-                <div class="youtube-player">
-                    <iframe 
-                        id="video-frame"
-                        width="760" 
-                        height="415" 
-                        src="https://www.youtube.com/embed/" 
-                        title="Olive Demo Video" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <button class="video-nav-button next-button" onclick="nextVideo()">❯</button>
-            </div>
-            <p class="video-subheading" id="video-description">AS A VIRTUAL HOSTESS</p>
-            <div class="video-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
+      </form>
     </section>
-
-    <!-- Bento Box Section -->
-    <section class="bento-section">
-        <div class="bento-container">
-            <div class="bento-cell cell-1">
-                <h3 class="cell-title">Integrate with your restaurant/cafe/diner</h3>
-                <img src="static/icons/restaurant software.svg" alt="Restaurant Software Integration" class="bento-image">
-            </div>
-            <div class="bento-cell cell-1">
-                <h3 class="cell-title">Integrate with your dental/veterinary/medical practice</h3>
-                <img src="static/icons/practice software.svg" alt="Restaurant Software Integration" class="bento-image">
-            </div>
-            <div class="bento-cell cell-1">
-                <h3 class="cell-title">Or whatever industry you're in!</h3>
-            </div>
-            <div class="bento-cell cell-1">
-                <h3 class="cell-title">Over 3,000 integrations and counting!</h3>
-            </div>
-        </div>
+    
+    <!-- Lorem Ipsum Section -->
+    <section class="lorem-section">
+      <p class="lorem-text">
+        Business owners are spending too much time and money on fragmented software. Every other year a new layer or feature, or both, gets added to their existing stack, complicating their operations further. There is an overlooked software-bloat crisis among us.
+      </p>
+      <p class="lorem-text">
+        This is why we're building AXIOM, a vertical-agnostic AI-native operating system for business. Consolidate all of your tools into one platform, save money, and reduce operational headaches.
+      </p>
+      <p class="lorem-text">
+        Want to change the world with us? <a href="https://forms.gle/iidiLWr73KYpWC4K8">https://forms.gle/iidiLWr73KYpWC4K8</a>.
+      </p>
     </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-email"><a href="mailto:hello@theturingcenter.com">hello@theturingcenter.com</a></p>
+      <div class="social-icons">
+        <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <script>
+    // Initialize EmailJS with your service ID
+    (function() {
+      emailjs.init("YvHM7_EkeunqWMN6G"); // You'll need to replace this with your actual EmailJS public key
+    })();
 
-    <!-- Language Section -->
-    <section class="language-section">
-        <div class="language-container">
-            <h1 class="main-heading">ANY LANGUAGE, ANYWHERE</h1>
-            
-            <!-- Language Ticker (Right to Left) -->
-            <div class="ticker-container">
-                <div id="languages-ticker" class="ticker-content ticker-rtl">
-                    <!-- Will be populated dynamically -->
-                </div>
-            </div>
-            
-            <!-- Divider Line -->
-            <hr class="ticker-divider">
-            
-            <!-- 1x1 Ticker (Left to Right) -->
-            <div class="ticker-container">
-                <div id="flags-ticker" class="ticker-content ticker-ltr">
-                    <!-- Will be populated dynamically -->
-                </div>
-            </div>
-            
-            <h3 class="language-subheading">DO BUSINESS WITH EVERYONE. OLIVE SPEAKS IN OVER 75+ LANGUAGES.</h3>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing-section" id="pricing-section">
-        <div class="pricing-container">
-            <h1 class="main-heading">CHOOSE YOUR PLAN</h1>
-            
-            <div class="pricing-cards">
-                <!-- Basic Plan -->
-                <div class="pricing-card">
-                    <h2 class="plan-name">RECEPTIONIST</h2>
-                    <p class="plan-price">$200<span class="price-period">/month</span></p>
-                    <ul class="plan-features">
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> 500 voice minutes</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> $0.25 overage/voice minute</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Up to 5 syncronous calls</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Google suite automation only</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Unlimited operations</li>
-                    </ul>
-                    <a href="contact.html" class="plan-button">GET STARTED</a>
-                </div>
-                
-                <!-- Pro Plan (Best Value) -->
-                <div class="pricing-card best-value">
-                    <div class="best-value-tag">POPULAR CHOICE</div>
-                    <h2 class="plan-name">ASSISTANT</h2>
-                    <p class="plan-price">$500<span class="price-period">/month</span></p>
-                    <ul class="plan-features">
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> 1,700 voice minutes</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> $0.25 overage/voice minute</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Up to 20 syncronous calls</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Full software automation</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Unlimited operations</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Access to beta features</li>
-                    </ul>
-                    <a href="contact.html" class="plan-button">GET STARTED</a>
-                </div>
-                
-                <!-- Enterprise Plan -->
-                <div class="pricing-card">
-                    <h2 class="plan-name">EXECUTIVE</h2>
-                    <p class="plan-price">$$$$<span class="price-period">/month</span></p>
-                    <ul class="plan-features">
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Unlimited voice minutes</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Zero overage charges</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Unlimited syncronous calls</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Full software automation</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Unlimited operations</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Access to beta features</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Priced to your needs</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="check-icon"> Priority support</li>
-                    </ul>
-                    <a href="contact.html" class="plan-button">GET STARTED</a>
-                </div>
-            </div>
-            
-            <p class="pricing-note">*All plans are priced per location.</p>
-            
-            <!-- Comparison Chart -->
-            <div class="comparison-section">
-                <h2 class="comparison-heading">FEATURE COMPARISON</h2>
-                <div class="comparison-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>FEATURE</th>
-                                <th>RECEPTIONIST</th>
-                                <th>ASSISTANT</th>
-                                <th>EXECUTIVE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Natural Language Processing</td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Contextual Awareness</td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Fully Customizable</td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>24/7 Availability</td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Multilingual Support</td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Inbound/Outbound Calls</td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Inbound/Outbound Texts</td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Call Forwarding/Routing</td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Call Transcriptions Available</td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Google Suite Automation</td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Full Software Automation</td>
-                                <td></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Live-Listening Feature <span class="beta-tag">BETA</span></td>
-                                <td></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Data Analytics Dashboard <span class="alpha-tag">ALPHA</span></td>
-                                <td></td>
-                                <td></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                            <tr>
-                                <td>Business Intelligence Hub <span class="alpha-tag">ALPHA</span></td>
-                                <td></td>
-                                <td></td>
-                                <td><img src="static/emojis/check.svg" alt="Yes" class="check-icon"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Voice-Only Pricing Section -->
-    <section class="voice-pricing-section">
-        <div class="voice-pricing-container">
-            <h1 class="voice-main-heading">ONLY NEED VOICE?</h1>
-            
-            <div class="voice-pricing-cards">
-                <!-- Basic Voice Plan -->
-                <div class="voice-pricing-card">
-                    <h2 class="voice-plan-name">LITTLE VOICE</h2>
-                    <p class="voice-plan-price">$50<span class="voice-price-period">/month</span></p>
-                    <ul class="voice-plan-features">
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> 200 voice minutes</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> $0.25 overage/voice minute</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Call routing/forwarding</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Transcriptions available</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> 1 call at a time</li>
-                    </ul>
-                    <a href="contact.html" class="voice-plan-button">GET STARTED</a>
-                </div>
-                
-                <!-- Standard Voice Plan -->
-                <div class="voice-pricing-card voice-best-value">
-                    <div class="voice-best-value-tag">POPULAR CHOICE</div>
-                    <h2 class="voice-plan-name">LOTSA VOICE</h2>
-                    <p class="voice-plan-price">$100<span class="voice-price-period">/month</span></p>
-                    <ul class="voice-plan-features">
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> 400 voice minutes</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> $0.25 overage/voice minute</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Call routing/forwarding</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Transcriptions available</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Up to 2 syncronous calls</li>
-                    </ul>
-                    <a href="contact.html" class="voice-plan-button">GET STARTED</a>
-                </div>
-                
-                <!-- Premium Voice Plan -->
-                <div class="voice-pricing-card">
-                    <h2 class="voice-plan-name">MUCHO VOICE</h2>
-                    <p class="voice-plan-price">$300<span class="voice-price-period">/month</span></p>
-                    <ul class="voice-plan-features">
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> 1,200 voice minutes</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> $0.25 overage/voice minute</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Call routing/forwarding</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Transcriptions available</li>
-                        <li><img src="static/emojis/check.svg" alt="Included" class="voice-check-icon"> Up to 3 syncronous calls</li>
-                    </ul>
-                    <a href="contact.html" class="voice-plan-button">GET STARTED</a>
-                </div>
-            </div>
-            
-            <p class="voice-pricing-note">Need more minutes? <a href="contact.html" class="voice-pricing-contact">Contact sales.</a> *All voice plans include multilingual support and 24/7 availability.</p>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section" id="faq-section">
-        <div class="faq-container">
-            <h1 class="main-heading">FREQUENTLY ASKED QUESTIONS</h1>
-            
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What are voice minutes?</h3>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Voice minutes are the minutes counted while OLIVE is speaking. So, if a call lasts 5 minutes, but OLIVE only speaks for 3 of them, that entire call only counts as 3 voice minutes.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What is the Live-Listening Feature?</h3>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>The Live-Listening Feature is perfect for businesses that may not be ready to adopt the full scope of AI, but could still benefit from an assistant. With Live-Listening, your employees can answer calls while OLIVE listens in and executes tasks in the background that are pertinent to the conversation. This helps reduce errors, increase efficiency, and improve caller satisfaction.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Can I keep my business's phone number with OLIVE?</h3>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Of course! We understand that you probably have had a number that's been around for awhile and which many people are familiar with. We want to make OLIVE's adoption as smooth as possible - keeping your number is a big part of that. However, if you would like a new number, we can certainly provide that as well (at a very competitive rate).</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Is OLIVE AI right for my business?</h3>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>That depends on one very important question: does your business utilize a phone in any way? If so, then OLIVE is a great fit for you! No matter what industry you're in, OLIVE can help you automate your business and elevate your customer service.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What kind of analytics does OLIVE provide?</h3>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Analytics are provided in the Data Analytics Dashboard and Business Intelligence Hub. The Data Analytics Dashboard provides a comprehensive view of your business's performance, including call volume, caller sentiment, and agent productivity. The Business Intelligence Hub, on the other hand, offers a more detailed analysis of your business's operations, including customer behavior, agent performance, and revenue trends, and offers solutions to improve your workflows with the end goal of increasing your bottom line.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How secure is my business data with OLIVE?</h3>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Your data is as secure as you would like it to be. We do not sell your data. However, if you would like to opt in to allowing us access to your data (for the sole purpose of training our models), we will compensate you with additional voice minutes absolutely free of charge.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer-section">
-        <div class="footer-background"></div>
-        <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-col">
-                    <h4 class="footer-title">OLIVE AI</h4>
-                    <p class="footer-description">
-                        Your business, automated.
-                    </p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M18.42,14.009L27.891,3h-2.244l-8.224,9.559L10.855,3H3.28l9.932,14.455L3.28,29h2.244l8.684-10.095,6.936,10.095h7.576l-10.301-14.991h0Zm-3.074,3.573l-1.006-1.439L6.333,4.69h3.447l6.462,9.243,1.006,1.439,8.4,12.015h-3.447l-6.854-9.804h0Z"></path></svg>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M24.562,7.613c-1.508-.983-2.597-2.557-2.936-4.391-.073-.396-.114-.804-.114-1.221h-4.814l-.008,19.292c-.081,2.16-1.859,3.894-4.039,3.894-.677,0-1.315-.169-1.877-.465-1.288-.678-2.169-2.028-2.169-3.582,0-2.231,1.815-4.047,4.046-4.047,.417,0,.816,.069,1.194,.187v-4.914c-.391-.053-.904-.087-1.617-.087-4.886,0-8.86,3.975-8.86,8.86,0,2.998,1.498,5.65,3.783,7.254,1.439,1.01,3.19,1.606,5.078,1.606,4.886,0,8.86-3.975,8.86-8.86V11.357c1.888,1.355,4.201,2.154,6.697,2.154v-4.814c-1.345,0-2.597-.4-3.647-1.085Z"></path></svg>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M18.05,16c0,5.018-4.041,9.087-9.025,9.087S0,21.018,0,16,4.041,6.913,9.025,6.913s9.025,4.069,9.025,9.087m9.901,0c0,4.724-2.02,8.555-4.513,8.555s-4.513-3.831-4.513-8.555,2.02-8.555,4.512-8.555,4.513,3.83,4.513,8.555m4.05,0c0,4.231-.71,7.664-1.587,7.664s-1.587-3.431-1.587-7.664,.71-7.664,1.587-7.664,1.587,3.431,1.587,7.664"></path></svg>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M26.111,3H5.889c-1.595,0-2.889,1.293-2.889,2.889V26.111c0,1.595,1.293,2.889,2.889,2.889H26.111c1.595,0,2.889-1.293,2.889-2.889V5.889c0-1.595-1.293-2.889-2.889-2.889ZM10.861,25.389h-3.877V12.87h3.877v12.519Zm-1.957-14.158c-1.267,0-2.293-1.034-2.293-2.31s1.026-2.31,2.293-2.31,2.292,1.034,2.292,2.31-1.026,2.31-2.292,2.31Zm16.485,14.158h-3.858v-6.571c0-1.802-.685-2.809-2.111-2.809-1.551,0-2.362,1.048-2.362,2.809v6.571h-3.718V12.87h3.718v1.686s1.118-2.069,3.775-2.069,4.556,1.621,4.556,4.975v7.926Z" fill-rule="evenodd"></path></svg>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16,2C8.268,2,2,8.268,2,16s6.268,14,14,14s14-6.268,14-14S23.732,2,16,2z M20.176,11.421h-2.009 c-0.238,0-0.5,0.31-0.5,0.734v1.449h2.509l-0.333,2.811h-2.176v7.136h-2.885v-7.136h-2.468v-2.811h2.468v-1.225 c0-2.395,1.096-3.682,3.589-3.682h1.805V11.421z"></path></svg>
-                        </a>
-                    </div>
-                    <div class="footer-copyright">
-                        &copy; 2025 THE TURING CENTER. All rights reserved.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Video carousel functionality
-        const videos = [
-            {
-                url: "https://www.youtube.com/embed/aIzrtkXB2Us",
-                description: "AS A VIRTUAL HOSTESS"
-            },
-            {
-                url: "https://www.youtube.com/embed/PtMjeY3fYAk", // Same URL for now
-                description: "AS A PIZZERIA EMPLOYEE"
-            },
-            {
-                url: "https://www.youtube.com/embed/4DhU2poDjIo", // Same URL for now
-                description: "AS A DENTAL RECEPTIONIST"
-            }
-        ];
-        
-        let currentVideoIndex = 0;
-        
-        function updateVideo() {
-            const videoFrame = document.getElementById('video-frame');
-            const videoDescription = document.getElementById('video-description');
-            
-            // Update the iframe src
-            videoFrame.src = videos[currentVideoIndex].url;
-            
-            // Update the description
-            videoDescription.textContent = videos[currentVideoIndex].description;
-            
-            // Update the active dot
-            document.querySelectorAll('.dot').forEach((dot, index) => {
-                if (index === currentVideoIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-        
-        function nextVideo() {
-            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-            updateVideo();
-        }
-        
-        function prevVideo() {
-            currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
-            updateVideo();
-        }
-
-        // Dynamic ticker population
-        document.addEventListener('DOMContentLoaded', function() {
-            // Function to create ticker items
-            function createTickerItems(containerId, basePath, itemList, duplicateFactor = 3) {
-                const container = document.getElementById(containerId);
-                
-                // Create and append items, repeated for smooth scrolling
-                for (let dup = 0; dup < duplicateFactor; dup++) {
-                    itemList.forEach(item => {
-                        const img = document.createElement('img');
-                        img.src = `${basePath}/${item}.svg`;
-                        img.alt = item;
-                        img.className = 'ticker-item';
-                        container.appendChild(img);
-                    });
-                }
-            }
-            
-            // Sample of common languages (you can expand this list or load from a JSON file)
-            const sampleLanguages = [
-                'arabic', 'bengali', 'chinese', 'danish', 'english', 'french', 
-                'german', 'hindi', 'italian', 'japanese', 'korean', 'portuguese', 
-                'russian', 'spanish', 'sanskrit', 'uzbek', 'urdu', 'vietnamese'
-                // In practice, your server would generate the complete list
-            ];
-            
-            // Sample of country codes (you can expand this list or load from a JSON file)
-            const sampleCountryCodes = [
-                'us', 'gb', 'ca', 'au', 'fr', 'de', 'it', 'es', 'jp', 'cn', 
-                'br', 'ru', 'in', 'mx', 'za', 'ar', 'ch', 'se', 'no', 'nl'
-                // In practice, your server would generate the complete list
-            ];
-            
-            // Populate tickers
-            createTickerItems('languages-ticker', 'static/languages', sampleLanguages);
-            createTickerItems('flags-ticker', 'static/1x1', sampleCountryCodes);
+    // Make the waitlist form functional
+    document.querySelector('.waitlist').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const email = formData.get('email');
+      const business = formData.get('business');
+      const fullname = formData.get('fullname');
+      
+      // Show loading state
+      const submitBtn = this.querySelector('.submit');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      
+      // Prepare email template parameters
+      const templateParams = {
+        to_email: 'sam@theturingcenter.com',
+        from_name: fullname || 'Anonymous',
+        from_email: email,
+        business_type: business || 'Not specified',
+        message: `New waitlist signup from ${fullname || 'Anonymous'} (${email}). Business type: ${business || 'Not specified'}`
+      };
+      
+      // Send email using EmailJS
+      emailjs.send('service_bbqklau', 'template_srdt2ao', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Thank you for joining our waitlist! We\'ll be in touch soon.');
+          // Reset form
+          document.querySelector('.waitlist').reset();
+        }, function(error) {
+          console.log('FAILED...', error);
+          alert('Sorry, there was an error. Please try again or contact us directly at hello@theturingcenter.com');
+        })
+        .finally(function() {
+          // Reset button
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
         });
-
-        // FAQ Accordion
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqItems = document.querySelectorAll('.faq-question');
-            
-            faqItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const parent = item.parentNode;
-                    parent.classList.toggle('active');
-                    
-                    // Update the plus/minus icon
-                    const icon = item.querySelector('.faq-icon');
-                    icon.textContent = parent.classList.contains('active') ? '–' : '+';
-                });
-            });
-        });
-
-        // Hamburger menu functionality
-        function toggleMenu() {
-            const mobileMenu = document.querySelector('.mobile-menu');
-            mobileMenu.classList.toggle('active');
-        }
-    </script>
-
-    <!-- Add this script before the closing body tag -->
-    <script>
-        // Hamburger menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            
-            hamburger.addEventListener('click', function() {
-                hamburger.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-            });
-            
-            // Close mobile menu when clicking a link
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    hamburger.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            });
-            
-            // Smooth scrolling for all navigation links
-            const navLinks = document.querySelectorAll('.nav-link, .mobile-link');
-            navLinks.forEach(link => {
-                if (link.getAttribute('href').startsWith('#')) {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 70, // Offset for the navbar height
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
-                }
-            });
-        });
-    </script>
+    });
+  </script>
 </body>
 </html>
