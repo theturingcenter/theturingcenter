@@ -15,11 +15,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --page-bg: #ffffff;
-      --text: #000000;
-      --muted: #404040;
-      --accent: #000000;
-      --border: #000000;
+      --page-bg: #e0e5ec;
+      --text: #2d3436;
+      --muted: #636e72;
+      --accent: #6c5ce7;
+      --border: transparent;
+      --shadow-light: #ffffff;
+      --shadow-dark: #a3b1c6;
     }
     * { box-sizing: border-box; }
     html, body {
@@ -30,15 +32,118 @@
       background: var(--page-bg);
       color: var(--text);
       font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      overflow-x: hidden; /* allow vertical scroll */
+      overflow-x: hidden;
+      position: relative;
     }
+    
+    /* Animated flowing lights */
+    .flowing-light {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(108, 92, 231, 0.4) 0%, rgba(108, 92, 231, 0.1) 50%, transparent 100%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+    
+    .light-1 {
+      top: 10%;
+      left: 10%;
+      animation: flow1 20s ease-in-out infinite;
+    }
+    
+    .light-2 {
+      top: 60%;
+      right: 15%;
+      animation: flow2 25s ease-in-out infinite;
+    }
+    
+    .light-3 {
+      bottom: 20%;
+      left: 20%;
+      animation: flow3 30s ease-in-out infinite;
+    }
+    
+    .light-4 {
+      top: 30%;
+      right: 40%;
+      animation: flow4 22s ease-in-out infinite;
+    }
+    
+    .light-5 {
+      bottom: 40%;
+      right: 10%;
+      animation: flow5 28s ease-in-out infinite;
+    }
+    
+    .light-6 {
+      top: 70%;
+      left: 50%;
+      animation: flow6 24s ease-in-out infinite;
+    }
+    
+    @keyframes flow1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(200px, 150px) scale(1.2); }
+      50% { transform: translate(-100px, 200px) scale(0.8); }
+      75% { transform: translate(150px, -100px) scale(1.1); }
+    }
+    
+    @keyframes flow2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-250px, 180px) scale(1.3); }
+      66% { transform: translate(180px, -150px) scale(0.9); }
+    }
+    
+    @keyframes flow3 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      20% { transform: translate(300px, -200px) scale(1.1); }
+      40% { transform: translate(-150px, 250px) scale(0.7); }
+      60% { transform: translate(200px, 100px) scale(1.2); }
+      80% { transform: translate(-100px, -150px) scale(0.9); }
+    }
+    
+    @keyframes flow4 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      30% { transform: translate(180px, 220px) scale(1.15); }
+      60% { transform: translate(-220px, -180px) scale(0.85); }
+    }
+    
+    @keyframes flow5 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(-180px, 200px) scale(0.9); }
+      50% { transform: translate(250px, -100px) scale(1.25); }
+      75% { transform: translate(-100px, -200px) scale(0.8); }
+    }
+    
+    @keyframes flow6 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      40% { transform: translate(200px, 180px) scale(1.1); }
+      80% { transform: translate(-250px, -120px) scale(0.95); }
+    }
+    
+    /* Ensure content is above lights */
+    main {
+      position: relative;
+      z-index: 1;
+    }
+    
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+    
     /* Content container centered */
     .content {
       position: relative;
       min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 200px 48px 200px; /* even more top/bottom space */
+      padding: 80px 48px 200px;
+      z-index: 1;
     }
     .stack {
       width: min(1100px, 92vw);
@@ -48,14 +153,21 @@
     .brand {
       display: grid;
       grid-template-columns: auto 1fr;
-      align-items: center; /* centers text vertically relative to logo */
+      align-items: center;
       gap: 24px;
+      padding: 32px;
+      background: var(--page-bg);
+      border-radius: 30px;
+      box-shadow: 
+        20px 20px 60px var(--shadow-dark),
+        -20px -20px 60px var(--shadow-light);
     }
     .logo {
       width: clamp(84px, 12vw, 140px);
       height: clamp(84px, 12vw, 140px);
       animation: spin 10s linear infinite;
-      filter: drop-shadow(0 0 12px rgba(0,0,0,0.08));
+      filter: drop-shadow(8px 8px 16px var(--shadow-dark)) 
+              drop-shadow(-8px -8px 16px var(--shadow-light));
     }
     @keyframes spin {
       from { transform: rotate(0deg); }
@@ -86,10 +198,11 @@
     .underline {
       width: 100%;
       height: 2px;
-      background: var(--accent);
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
       border: none;
       margin: 0;
-      opacity: 0.95;
+      opacity: 0.6;
+      box-shadow: 0 2px 4px rgba(108, 92, 231, 0.2);
     }
     .subtitle {
       margin: 0;
@@ -104,6 +217,12 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px 16px;
       align-items: center;
+      padding: 32px;
+      background: var(--page-bg);
+      border-radius: 30px;
+      box-shadow: 
+        20px 20px 60px var(--shadow-dark),
+        -20px -20px 60px var(--shadow-light);
     }
     /* Make email input the longest of the four by giving it a larger base width */
     .waitlist-row {
@@ -112,21 +231,30 @@
     .field {
       width: 100%;
       appearance: none;
-      border: none; /* remove borders */
-      background: rgba(0,0,0,0.06); /* low-key fill */
+      border: none;
+      background: var(--page-bg);
       color: var(--text);
-      border-radius: 10px;
+      border-radius: 20px;
       padding: 14px 16px;
       outline: none;
-      transition: box-shadow 0.2s ease, background-color 0.2s ease, transform 0.06s ease;
+      transition: all 0.3s ease;
       font-weight: 600;
-      box-shadow: inset 0 1px 0 rgba(0,0,0,0.08), inset 0 -8px 24px rgba(255,255,255,0.35);
-      backdrop-filter: blur(2px);
-      border-bottom: 2px solid rgba(0,0,0,0.5); /* underline */
+      box-shadow: 
+        inset 8px 8px 16px var(--shadow-dark),
+        inset -8px -8px 16px var(--shadow-light);
     }
-    .field::placeholder { color: var(--muted); opacity: 0.85; }
-    .field:hover { background: rgba(0,0,0,0.08); border-bottom-color: rgba(0,0,0,0.7); }
-    .field:focus { box-shadow: 0 0 0 6px rgba(0,0,0,0.10), inset 0 1px 0 rgba(0,0,0,0.08), inset 0 -8px 24px rgba(255,255,255,0.35); border-bottom-color: #000000; }
+    .field::placeholder { color: var(--muted); opacity: 0.6; }
+    .field:hover { 
+      box-shadow: 
+        inset 6px 6px 12px var(--shadow-dark),
+        inset -6px -6px 12px var(--shadow-light);
+    }
+    .field:focus { 
+      box-shadow: 
+        inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light),
+        0 0 0 4px rgba(108, 92, 231, 0.1);
+    }
     .submit {
       cursor: pointer;
       border: none;
@@ -134,11 +262,14 @@
       color: #ffffff;
       font-weight: 800;
       letter-spacing: 0.04em;
-      border-radius: 10px;
+      border-radius: 20px;
       padding: 14px 18px;
       text-transform: none;
-      transition: transform 0.12s ease, box-shadow 0.25s ease, background-color 0.2s ease;
-      width: 100%; /* match column width */
+      transition: all 0.3s ease;
+      width: 100%;
+      box-shadow: 
+        8px 8px 16px var(--shadow-dark),
+        -8px -8px 16px var(--shadow-light);
       animation: bounce 1.5s ease-in-out infinite;
     }
     @keyframes bounce {
@@ -146,37 +277,81 @@
       40% { transform: translateY(-4px); }
       60% { transform: translateY(-2px); }
     }
-    .submit:hover { background: rgba(0,0,0,0.88); box-shadow: none; }
-    .submit:active { background: rgba(0,0,0,0.82); box-shadow: none; }
+    .submit:hover { 
+      box-shadow: 
+        6px 6px 12px var(--shadow-dark),
+        -6px -6px 12px var(--shadow-light);
+      transform: translateY(-2px);
+    }
+    .submit:active { 
+      box-shadow: 
+        inset 4px 4px 8px rgba(0,0,0,0.2),
+        inset -4px -4px 8px rgba(255,255,255,0.1);
+      transform: translateY(0);
+    }
     /* Responsive: stack form on small screens */
     @media (max-width: 720px) {
-      .content { padding: 160px 16px 160px; }
+      .content { padding: 60px 16px 160px; }
       .stack { width: 84vw; gap: 16px; }
-      .brand { gap: 12px; }
+      .brand { 
+        gap: 12px; 
+        padding: 24px;
+        border-radius: 24px;
+        box-shadow: 
+          15px 15px 40px var(--shadow-dark),
+          -15px -15px 40px var(--shadow-light);
+      }
       .logo { width: clamp(52px, 16vw, 84px); height: clamp(52px, 16vw, 84px); }
       .title { font-size: clamp(18px, 6vw, 28px); letter-spacing: 0.08em; }
       .subtitle { font-size: clamp(12px, 3.4vw, 14px); }
       .underline { height: 1px; }
-      .waitlist { grid-template-columns: 1fr; gap: 10px; }
-      .field { padding: 10px 12px; border-bottom-width: 1.5px; }
-      .submit { padding: 12px 14px; font-size: 0.95rem; }
+      .waitlist { 
+        grid-template-columns: 1fr; 
+        gap: 10px; 
+        padding: 24px;
+        border-radius: 24px;
+        box-shadow: 
+          15px 15px 40px var(--shadow-dark),
+          -15px -15px 40px var(--shadow-light);
+      }
+      .field { padding: 10px 12px; border-radius: 16px; }
+      .submit { padding: 12px 14px; font-size: 0.95rem; border-radius: 16px; }
     }
     @media (max-width: 420px) {
-      .content { padding: 140px 12px 140px; }
+      .content { padding: 50px 12px 140px; }
       .stack { width: 82vw; gap: 12px; }
-      .brand { gap: 10px; }
+      .brand { 
+        gap: 10px; 
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 
+          12px 12px 30px var(--shadow-dark),
+          -12px -12px 30px var(--shadow-light);
+      }
       .logo { width: clamp(46px, 15vw, 72px); height: clamp(46px, 15vw, 72px); }
       .title { font-size: clamp(16px, 6.4vw, 24px); letter-spacing: 0.06em; }
       .subtitle { font-size: clamp(11px, 3.2vw, 13px); }
-      .field { padding: 9px 10px; border-bottom-width: 1px; }
-      .submit { padding: 11px 12px; font-size: 0.9rem; }
+      .waitlist {
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 
+          12px 12px 30px var(--shadow-dark),
+          -12px -12px 30px var(--shadow-light);
+      }
+      .field { padding: 9px 10px; border-radius: 14px; }
+      .submit { padding: 11px 12px; font-size: 0.9rem; border-radius: 14px; }
     }
 
     /* Lorem Ipsum Section */
     .lorem-section {
       width: min(1100px, 92vw);
-      margin: 0 auto;
-      padding: 60px 0 0 0;
+      margin: 80px auto 0;
+      padding: 40px;
+      background: var(--page-bg);
+      border-radius: 30px;
+      box-shadow: 
+        20px 20px 60px var(--shadow-dark),
+        -20px -20px 60px var(--shadow-light);
     }
     .lorem-text {
       margin: 0 0 30px 0;
@@ -184,18 +359,36 @@
       font-weight: 400;
       line-height: 1.6;
       text-align: left;
-      opacity: 0.8;
+      opacity: 0.85;
     }
     .lorem-text:last-child {
       margin-bottom: 0;
     }
+    .lorem-text a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 2px 6px;
+      border-radius: 8px;
+      box-shadow: 
+        inset 2px 2px 4px var(--shadow-dark),
+        inset -2px -2px 4px var(--shadow-light);
+    }
+    .lorem-text a:hover {
+      box-shadow: 
+        inset 1px 1px 2px var(--shadow-dark),
+        inset -1px -1px 2px var(--shadow-light);
+    }
     
     /* Footer */
     .footer {
-      background: rgba(0,0,0,0.04);
-      border-top: 1px solid var(--border);
-      padding: 20px 0;
-      margin-top: 0;
+      background: transparent;
+      border-top: none;
+      padding: 30px 0;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
     }
     .footer-content {
       width: min(1100px, 92vw);
@@ -205,6 +398,12 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
+      padding: 24px 32px;
+      background: var(--page-bg);
+      border-radius: 30px;
+      box-shadow: 
+        20px 20px 60px var(--shadow-dark),
+        -20px -20px 60px var(--shadow-light);
     }
     .footer-email {
       margin: 0;
@@ -215,44 +414,126 @@
     .footer-email a {
       color: inherit;
       text-decoration: none;
-      transition: opacity 0.2s ease;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 
+        inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
     }
     .footer-email a:hover {
-      opacity: 0.7;
+      box-shadow: 
+        inset 2px 2px 4px var(--shadow-dark),
+        inset -2px -2px 4px var(--shadow-light);
     }
     .social-icons {
       display: flex;
-      gap: 16px;
+      gap: 12px;
     }
     .social-link {
       color: var(--text);
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      box-shadow: 
+        6px 6px 12px var(--shadow-dark),
+        -6px -6px 12px var(--shadow-light);
     }
     .social-link:hover {
       opacity: 1;
+      box-shadow: 
+        4px 4px 8px var(--shadow-dark),
+        -4px -4px 8px var(--shadow-light);
+      transform: translateY(-2px);
+    }
+    .social-link:active {
+      box-shadow: 
+        inset 3px 3px 6px var(--shadow-dark),
+        inset -3px -3px 6px var(--shadow-light);
+      transform: translateY(0);
     }
     
     @media (max-width: 720px) {
-      .lorem-section { width: 84vw; padding: 40px 0 0 0; }
-      .footer { padding: 16px 0; }
-      .footer-content { flex-direction: column; text-align: center; gap: 16px; }
+      .flowing-light {
+        width: 200px;
+        height: 200px;
+        filter: blur(40px);
+      }
+      .lorem-section { 
+        width: 84vw; 
+        margin-top: 60px;
+        padding: 24px; 
+        border-radius: 24px;
+        box-shadow: 
+          15px 15px 40px var(--shadow-dark),
+          -15px -15px 40px var(--shadow-light);
+      }
+      .footer { padding: 20px 0; margin-top: 30px; }
+      .footer-content { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 16px; 
+        padding: 20px 24px;
+        border-radius: 24px;
+        box-shadow: 
+          15px 15px 40px var(--shadow-dark),
+          -15px -15px 40px var(--shadow-light);
+      }
       .footer-email { font-size: 14px; }
     }
     @media (max-width: 420px) {
-      .lorem-section { width: 86vw; padding: 30px 0 0 0; }
-      .footer { padding: 12px 0; }
-      .footer-content { gap: 12px; }
+      .flowing-light {
+        width: 150px;
+        height: 150px;
+        filter: blur(30px);
+      }
+      .lorem-section { 
+        width: 86vw; 
+        margin-top: 50px;
+        padding: 20px; 
+        border-radius: 20px;
+        box-shadow: 
+          12px 12px 30px var(--shadow-dark),
+          -12px -12px 30px var(--shadow-light);
+      }
+      .footer { padding: 16px 0; margin-top: 24px; }
+      .footer-content { 
+        gap: 12px; 
+        padding: 16px 20px;
+        border-radius: 20px;
+        box-shadow: 
+          12px 12px 30px var(--shadow-dark),
+          -12px -12px 30px var(--shadow-light);
+      }
       .footer-email { font-size: 13px; }
-      .social-icons { gap: 12px; }
+      .social-icons { gap: 10px; }
+      .social-link {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Flowing light animations -->
+  <div class="flowing-light light-1"></div>
+  <div class="flowing-light light-2"></div>
+  <div class="flowing-light light-3"></div>
+  <div class="flowing-light light-4"></div>
+  <div class="flowing-light light-5"></div>
+  <div class="flowing-light light-6"></div>
+  
   <main class="content">
     <section class="stack" aria-label="Hero">
       <div class="brand">
-        <img class="logo" src="black logo.svg" alt="The Turing Center logo" />
+        <img class="logo" src="static/black logo.svg" alt="The Turing Center logo" />
         <div class="brand-text">
           <h1 class="title">THE TURING CENTER</h1>
           <hr class="underline" />
@@ -280,7 +561,7 @@
         This is why we're building AXIOM, a vertical-agnostic AI-native operating system for business. Consolidate all of your tools into one platform, save money, and reduce operational headaches.
       </p>
       <p class="lorem-text">
-        Want to change the world with us? <a href="https://forms.gle/iidiLWr73KYpWC4K8">https://forms.gle/iidiLWr73KYpWC4K8</a>.
+        Want to change the world with us? <a href="https://forms.gle/iidiLWr73KYpWC4K8">https://forms.gle/iidiLWr73KYpWC4K8</a>
       </p>
     </section>
   </main>
@@ -357,4 +638,3 @@
   </script>
 </body>
 </html>
-
